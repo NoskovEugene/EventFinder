@@ -1,9 +1,9 @@
-
+using Microsoft.EntityFrameworkCore;
 
 namespace EventFinder.Models
 {
-    public class Context
+    public class Context : DbContext
     {
-        
+        public DbSet<User> Users {get;set;}
     }
 }
