@@ -5,10 +5,12 @@ namespace EventFinder.Models
     public class Context : DbContext
     {
 
-        public Context(){}
-
         public Context(DbContextOptions<Context> options):base(options){}
 
-        public DbSet<User> Users {get;set;}
+        public DbSet<User> User {get;set;}
+
+        public DbSet<Role> Role {get;set;}
+
+        
     }
 }

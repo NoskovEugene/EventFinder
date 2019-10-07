@@ -26,6 +26,13 @@ namespace EventFinder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddOptions();
+
+            services.AddTransient<DbContext,Context>();
+
+            string connectionstring = Configuration.GetConnectionString("DefaultConnection");
+
+
             services.AddDbContext<Context>
             (
                 options=>{
@@ -35,6 +42,13 @@ namespace EventFinder
                     );
                 }
             );
+
+
+
+            //check database
+            var db = services.BuildServiceProvider().GetService<DbContext>();
+            db.Database.Migrate();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

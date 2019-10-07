@@ -1,9 +1,9 @@
+using EventFinder.Models.EntitiesAbstract;
+
 namespace EventFinder.Models
 {
-    public class User
+    public class User : EntityBase
     {
-        public int Id {get;set;}
-        
         public string Login {get;set;}
 
         public string Password {get;set;}
