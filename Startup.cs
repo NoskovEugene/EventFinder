@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Proxies;
 using EventFinder.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventFinder
 {
@@ -27,20 +26,15 @@ namespace EventFinder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddOptions();
-            services .AddTransient<DbContext,Context>();
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<Context>(
-                options=>options.UseLazyLoadingProxies().UseNpgsql
-                (
-                    Configuration.GetConnectionString("DefaultConnection"),
-                    x=>x.CommandTimeout(600).MigrationsHistoryTable("__EFMigrationHistory","migr")
-                ),
-                ServiceLifetime.Transient
+            services.AddDbContext<Context>
+            (
+                options=>{
+                    options.UseLazyLoadingProxies().UseNpgsql(
+                        Configuration.GetConnectionString("DefaultConnection"),
+                        x=>x.CommandTimeout(600)
+                    );
+                }
             );
-            //check database
-            var db = services.BuildServiceProvider().GetService<DbContext>();
-            db.Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
