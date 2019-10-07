@@ -38,7 +38,7 @@ namespace EventFinder
                 options=>{
                     options.UseLazyLoadingProxies().UseNpgsql(
                         Configuration.GetConnectionString("DefaultConnection"),
-                        x=>x.CommandTimeout(600)
+                        x=>x.MigrationsHistoryTable("__EFMigrationsHistory","migr").CommandTimeout(600)
                     );
                 }
             );

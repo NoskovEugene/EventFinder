@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using EventFinder.Models.Entity;
 namespace EventFinder.Models
 {
     public class Context : DbContext

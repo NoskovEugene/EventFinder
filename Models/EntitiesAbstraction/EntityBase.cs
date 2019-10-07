@@ -1,4 +1,4 @@
-namespace EventFinder.Models.EntitiesAbstract
+namespace EventFinder.Models.EntitiesAbstraction
 {
     public class EntityBase
     {

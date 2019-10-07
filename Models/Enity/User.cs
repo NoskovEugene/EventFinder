@@ -1,6 +1,6 @@
-using EventFinder.Models.EntitiesAbstract;
+using EventFinder.Models.EntitiesAbstraction;
 
-namespace EventFinder.Models
+namespace EventFinder.Models.Entity
 {
     public class User : EntityBase
     {
