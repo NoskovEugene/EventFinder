@@ -1,0 +1,17 @@
+@model EventFinder.Models.AccountModels.LoginModel
+
+@using(Html.BeginForm("Login","Account",FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="Email">Enter the email</label>
+        @Html.TextBoxFor(x=>x.Email,"",new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        <label>Enter the password</label>
+        @Html.PasswordFor(x=>x.Password,new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn">Login</button>
+    </div>
+
+}

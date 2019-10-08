@@ -1,4 +1,5 @@
 using EventFinder.Models.EntitiesAbstraction;
+using Microsoft.AspNetCore.Identity;
 
 namespace EventFinder.Models.Entity
 {

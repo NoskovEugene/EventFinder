@@ -18,14 +18,33 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                    
                 </div>
+                <nav>
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/Home/Index">EventFinder</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </nav>
+
             </div>
         </nav>
     </header>
