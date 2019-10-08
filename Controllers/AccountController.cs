@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Linq;
 using Microsoft.EntityFrameworkCore.Tools;
 using Microsoft.EntityFrameworkCore;
+using EventFinder.Models.Enums;
+using EventFinder.Extensions;
+using EventFinder.Models.Entity;
 
 namespace EventFinder.Controllers
 {
@@ -61,8 +64,14 @@ namespace EventFinder.Controllers
             if(user == null){
                 await Context.User.AddAsync(new Models.Entity.User()
                 {
+                    Login = model.Email,
                     Email = model.Email,
-                    Password = model.Password
+                    Password = model.Password,
+                    UserRoles = new List<UserRole>()
+                    {
+                        
+                    }
+                    
                 });
                 await Context.SaveChangesAsync();
                 await Authenticate(model.Email);
@@ -74,10 +83,10 @@ namespace EventFinder.Controllers
         public async Task Authenticate(string userName)
         {
             var claims = new List<Claim>{
-                new Claim(ClaimsIdentity.DefaultNameClaimType,userName)
+                new Claim(ClaimsIdentity.DefaultNameClaimType,userName),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType,RoleEnum.User.GetDisplayName())
             };
             var identity = new ClaimsIdentity(claims,"ApplicationCookie",ClaimsIdentity.DefaultNameClaimType,ClaimsIdentity.DefaultRoleClaimType);
-
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
 
         }

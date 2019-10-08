@@ -1,5 +1,5 @@
 using EventFinder.Models.EntitiesAbstraction;
-using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace EventFinder.Models.Entity
 {
@@ -18,5 +18,7 @@ namespace EventFinder.Models.Entity
         public string AboutMe {get;set;}
 
         public string PathToPhoto {get;set;}
+        
+        public IList<UserRole> UserRoles {get;set;}
     }
 }
