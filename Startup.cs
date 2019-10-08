@@ -11,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Web.Http;
 
 namespace EventFinder
 {
