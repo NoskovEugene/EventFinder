@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Proxies;
 using EventFinder.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace EventFinder
 {
@@ -28,19 +28,31 @@ namespace EventFinder
         {
             services.AddControllersWithViews();
             services.AddOptions();
-            services .AddTransient<DbContext,Context>();
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<Context>(
-                options=>options.UseLazyLoadingProxies().UseNpgsql
-                (
-                    Configuration.GetConnectionString("DefaultConnection"),
-                    x=>x.CommandTimeout(600).MigrationsHistoryTable("__EFMigrationHistory","migr")
-                ),
-                ServiceLifetime.Transient
+            services.AddMvcCore(options=> options.EnableEndpointRouting= false).AddAuthorization();
+
+            services.AddTransient<DbContext,EventFinderContext>();
+
+            string connectionstring = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddDbContext<EventFinderContext>
+            (
+                options=>{
+                    options.UseLazyLoadingProxies().UseNpgsql(
+                        Configuration.GetConnectionString("DefaultConnection"),
+                        x=>x.MigrationsHistoryTable("__EFMigrationsHistory","migr").CommandTimeout(600)
+                    );
+                }
             );
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(Options =>{
+                Options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+            });
+
+            
             //check database
             var db = services.BuildServiceProvider().GetService<DbContext>();
             db.Database.Migrate();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,14 +73,15 @@ namespace EventFinder
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
+            app.UseMvc(routes=>{
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
+
         }
     }
 }

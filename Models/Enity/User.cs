@@ -1,9 +1,10 @@
-namespace EventFinder.Models
+using EventFinder.Models.EntitiesAbstraction;
+using Microsoft.AspNetCore.Identity;
+
+namespace EventFinder.Models.Entity
 {
-    public class User
+    public class User : EntityBase
     {
-        public int Id {get;set;}
-        
         public string Login {get;set;}
 
         public string Password {get;set;}

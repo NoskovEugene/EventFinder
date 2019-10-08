@@ -1,12 +1,14 @@
 using Microsoft.Extensions.Options;
+using EventFinder.Configs.DbConfig;
+
 
 namespace EventFinder.Configs
 {
     public class RuntimeConfiguration : IRuntimeConfiguration
     {
-        private readonly IOptions<DbConfig.ConnectionString> _connectionString;
+        private readonly IOptions<ConnectionString> _connectionString;
 
-        public RuntimeConfiguration(IOptions<DbConfig.ConnectionString> ConnectionString)
+        public RuntimeConfiguration(IOptions<ConnectionString> ConnectionString)
         {
             this._connectionString = ConnectionString;
         }
