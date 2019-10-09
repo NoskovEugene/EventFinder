@@ -12,18 +12,19 @@ using Microsoft.EntityFrameworkCore;
 using EventFinder.Models.Enums;
 using EventFinder.Extensions;
 using EventFinder.Models.Entity;
+using EventFinder.Models.Repositories;
 
 namespace EventFinder.Controllers
 {
     [Route("account/[action]")]
     public class AccountController : Controller
     {
-        private EventFinderContext Context {get;set;}
-
-        public AccountController(EventFinderContext context)
+        private IRepositoryBase<User> UserRepository {get;set;}
+        public AccountController(EventFinderContext context,IRepositoryBase<User> userRepository)
         {
-            this.Context = context;
+            this.UserRepository = userRepository;
         }
+
         [Route("")]
         [ActionName("register")]
         [HttpGet]
@@ -31,6 +32,7 @@ namespace EventFinder.Controllers
         {
             return View();
         }
+
         [Route("")]
         [ActionName("login")]
         [HttpGet]
@@ -38,13 +40,14 @@ namespace EventFinder.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ActionName("login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if(ModelState.IsValid)
             {
-                Models.Entity.User user = await Context.User.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                Models.Entity.User user = UserRepository.Query(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
                 if(user != null){
                     await Authenticate(user.Email);
 
@@ -60,20 +63,17 @@ namespace EventFinder.Controllers
         [ActionName("register")]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            Models.Entity.User user = await Context.User.FirstOrDefaultAsync(u => u.Email == model.Email);
-            if(user == null){
-                await Context.User.AddAsync(new Models.Entity.User()
-                {
+            Models.Entity.User input = UserRepository.Query(u => u.Email == model.Email).FirstOrDefault();
+            if(input == null)
+            {
+                User newUser = new User(){
                     Login = model.Email,
                     Email = model.Email,
-                    Password = model.Password,
-                    UserRoles = new List<UserRole>()
-                    {
-                        
-                    }
-                    
-                });
-                await Context.SaveChangesAsync();
+                    Password = model.Password
+                };
+                UserRepository.Insert(newUser);
+                User tmp = UserRepository.Query(u => u.Email == newUser.Email).FirstOrDefault();
+                UserRepository.Update(tmp.Id,v=>v.UserRoles = new List<UserRole>(){ new UserRole() { UserId = tmp.Id,RoleId = (int)RoleEnum.User } });
                 await Authenticate(model.Email);
                 return RedirectToAction("Index","Home");
             }

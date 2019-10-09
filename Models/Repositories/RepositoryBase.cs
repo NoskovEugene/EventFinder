@@ -11,8 +11,6 @@ namespace EventFinder.Models.Repositories
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
     where TEntity : EntityBase
     {
-
-
         public RepositoryBase(DbContext context, ILogger<RepositoryBase<TEntity>> logger)
         {
             this.Context = context;
@@ -25,7 +23,8 @@ namespace EventFinder.Models.Repositories
 
         public void Delete(int id)
         {
-            
+            Delete(Find(id));
+            Context.SaveChanges();
         }
 
         public void Delete(TEntity entityToDelete)
@@ -55,42 +54,59 @@ namespace EventFinder.Models.Repositories
 
         public Task<TEntity> FindAsync(int id)
         {
-            return DbSet.FindAsync(id);
+            return DbSet.FindAsync(id).AsTask();
         }
 
         public void Flush()
         {
-            throw new NotImplementedException();
+            Context.SaveChanges();
         }
 
         public Task FlushAsync()
         {
-            throw new NotImplementedException();
+            return Context.SaveChangesAsync();
         }
 
         public int Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            try{
+                var result = DbSet.Add(entity).Entity;
+                Context.SaveChanges();
+                return result.Id;
+            }catch(Exception ex){
+                throw;
+            }
         }
 
         public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> filter)
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> Query = DbSet;
+            return DbSet.Where(filter);
         }
 
         public Task<IQueryable<TEntity>> QueryAsync(Expression<Func<TEntity, bool>> filter)
         {
-            throw new NotImplementedException();
+            return Task.Run(()=>{return Query(filter);});
         }
 
         public void Update(int id, Action<TEntity> updateAction)
         {
-            throw new NotImplementedException();
+            var entity = DbSet.Find(id) ?? throw new Exception("Entity not found");
+
+            updateAction(entity);
+
+            Context.Entry(entity).State = EntityState.Modified;
+
+            Context.SaveChanges();
         }
 
         public void UpdateEntity(TEntity entityToUpdate)
         {
-            throw new NotImplementedException();
+            if(Context.Entry(entityToUpdate).State == EntityState.Detached){
+                DbSet.Attach(entityToUpdate);
+            }
+            Context.Entry(entityToUpdate).State = EntityState.Modified;
+            Context.SaveChanges();
         }
     }
 }
