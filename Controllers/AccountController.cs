@@ -38,6 +38,11 @@ namespace EventFinder.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var role = User.Claims.Where(x=> x.Type == ClaimsIdentity.DefaultRoleClaimType);
+                ViewBag.Role = role;
+            }
             return View();
         }
 
@@ -49,7 +54,7 @@ namespace EventFinder.Controllers
             {
                 Models.Entity.User user = UserRepository.Query(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
                 if(user != null){
-                    await Authenticate(user.Email);
+                    await Authenticate(user);
 
                     return RedirectToAction("index", "Home");
                 }
@@ -88,7 +93,17 @@ namespace EventFinder.Controllers
             };
             var identity = new ClaimsIdentity(claims,"ApplicationCookie",ClaimsIdentity.DefaultNameClaimType,ClaimsIdentity.DefaultRoleClaimType);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+        }
 
+        public async Task Authenticate(User user)
+        {
+            RoleEnum role = (RoleEnum)user.UserRoles.Where(x=> x.UserId == user.Id).FirstOrDefault().RoleId;
+            var claims = new List<Claim>{
+                new Claim(ClaimsIdentity.DefaultNameClaimType,user.Email),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType,role.GetDisplayName())
+            };
+            var identity = new ClaimsIdentity(claims,"ApplicationCookie",ClaimsIdentity.DefaultNameClaimType,ClaimsIdentity.DefaultRoleClaimType);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(identity));
         }
 
         public async Task<IActionResult> Logout()

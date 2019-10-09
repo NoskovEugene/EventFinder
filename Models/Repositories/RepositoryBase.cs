@@ -77,7 +77,7 @@ namespace EventFinder.Models.Repositories
                 throw;
             }
         }
-
+        
         public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> filter)
         {
             IQueryable<TEntity> Query = DbSet;

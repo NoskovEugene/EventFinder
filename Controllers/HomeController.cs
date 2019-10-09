@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EventFinder.Models;
 using Microsoft.AspNetCore.Authorization;
-
+using System.Security.Claims;
+using EventFinder.Models.Enums;
+using EventFinder.Extensions;
 namespace EventFinder.Controllers
 {
     [Authorize()]
@@ -23,8 +25,14 @@ namespace EventFinder.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            if(User.Identity.IsAuthenticated){
+                var role = User.Claims.Where(x=>x.Type == ClaimsIdentity.DefaultRoleClaimType);
+                ViewBag.Role = role;
+            }
             return View();
         }
+
+        [Authorize(Roles = "Пользователь")]
         public IActionResult Privacy()
         {
             return View();
