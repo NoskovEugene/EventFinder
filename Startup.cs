@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace EventFinder
 {
@@ -27,13 +28,13 @@ namespace EventFinder
         {
             services.AddControllersWithViews();
             services.AddOptions();
+            services.AddMvcCore(options=> options.EnableEndpointRouting= false).AddAuthorization();
 
-            services.AddTransient<DbContext,Context>();
+            services.AddTransient<DbContext,EventFinderContext>();
 
             string connectionstring = Configuration.GetConnectionString("DefaultConnection");
 
-
-            services.AddDbContext<Context>
+            services.AddDbContext<EventFinderContext>
             (
                 options=>{
                     options.UseLazyLoadingProxies().UseNpgsql(
@@ -43,8 +44,11 @@ namespace EventFinder
                 }
             );
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(Options =>{
+                Options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+            });
 
-
+            
             //check database
             var db = services.BuildServiceProvider().GetService<DbContext>();
             db.Database.Migrate();
@@ -69,14 +73,15 @@ namespace EventFinder
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
+            app.UseMvc(routes=>{
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
+
         }
     }
 }

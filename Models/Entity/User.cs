@@ -1,4 +1,5 @@
 using EventFinder.Models.EntitiesAbstraction;
+using System.Collections.Generic;
 
 namespace EventFinder.Models.Entity
 {
@@ -17,5 +18,7 @@ namespace EventFinder.Models.Entity
         public string AboutMe {get;set;}
 
         public string PathToPhoto {get;set;}
+        
+        public virtual IList<UserRole> UserRoles {get;set;}
     }
 }

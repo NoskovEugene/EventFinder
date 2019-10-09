@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(EventFinderContext))]
     [Migration("20191007114145_AddRoles")]
     partial class AddRoles
     {
