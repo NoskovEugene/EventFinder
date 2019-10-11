@@ -73,7 +73,7 @@ namespace EventFinder.Models.Repositories
                 var result = DbSet.Add(entity).Entity;
                 Context.SaveChanges();
                 return result.Id;
-            }catch(Exception ex){
+            }catch(Exception){
                 throw;
             }
         }
