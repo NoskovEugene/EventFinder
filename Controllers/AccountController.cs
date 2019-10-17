@@ -1,5 +1,3 @@
-using EventFinder.Models.AccountModels;
-using EventFinder.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -13,6 +11,8 @@ using EventFinder.Models.Enums;
 using EventFinder.Extensions;
 using EventFinder.Models.Entity;
 using EventFinder.Models.Repositories;
+using EventFinder.Models.AccountModels;
+using EventFinder.Models;
 
 namespace EventFinder.Controllers
 {
