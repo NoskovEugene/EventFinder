@@ -2,15 +2,17 @@
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191017162048_LoginNowUnique")]
+    partial class LoginNowUnique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

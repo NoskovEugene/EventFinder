@@ -1,10 +1,11 @@
 using EventFinder.Models.EntitiesAbstraction;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace EventFinder.Models.Entity
 {
     public class User : EntityBase
     {
+
         public string Login {get;set;}
 
         public string Password {get;set;}

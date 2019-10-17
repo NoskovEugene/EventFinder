@@ -38,11 +38,6 @@ namespace EventFinder.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var role = User.Claims.Where(x=> x.Type == ClaimsIdentity.DefaultRoleClaimType);
-                ViewBag.Role = role;
-            }
             return View();
         }
 
@@ -53,7 +48,8 @@ namespace EventFinder.Controllers
             if(ModelState.IsValid)
             {
                 Models.Entity.User user = UserRepository.Query(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
-                if(user != null){
+                if(user != null)
+                {
                     await Authenticate(user);
 
                     return RedirectToAction("index", "Home");
@@ -68,31 +64,28 @@ namespace EventFinder.Controllers
         [ActionName("register")]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            Models.Entity.User input = UserRepository.Query(u => u.Email == model.Email).FirstOrDefault();
-            if(input == null)
+            if(ModelState.IsValid)
             {
-                User newUser = new User(){
-                    Login = model.Email,
-                    Email = model.Email,
-                    Password = model.Password
-                };
-                UserRepository.Insert(newUser);
-                User tmp = UserRepository.Query(u => u.Email == newUser.Email).FirstOrDefault();
-                UserRepository.Update(tmp.Id,v=>v.UserRoles = new List<UserRole>(){ new UserRole() { UserId = tmp.Id,RoleId = (int)RoleEnum.User } });
-                await Authenticate(model.Email);
-                return RedirectToAction("Index","Home");
+                if(!UserRepository.Exist(u=>u.Login == model.Login)){
+                    Models.Entity.User input = UserRepository.Query(u=> u.Email == model.Email).FirstOrDefault();
+                    if(input == null){
+                        User newUser = new User(){
+                            Login = model.Login,
+                            Email = model.Email,
+                            Password = model.Password
+                        };
+                        UserRepository.Insert(newUser);
+                        UserRepository.Update(newUser.Id,u=>u.UserRoles = new List<UserRole>() { new UserRole(){UserId = newUser.Id,RoleId = (int)RoleEnum.User}});
+                        await Authenticate(newUser);
+                        return RedirectToAction("Index","Home");
+                    }
+                    ModelState.AddModelError("UserExistErr","Такой пользователь уже существует");
+                }
+                else{
+                    ModelState.AddModelError("LoginErr","Логин уже существует");
+                }
             }
-            return View(model);
-        }
-
-        public async Task Authenticate(string userName)
-        {
-            var claims = new List<Claim>{
-                new Claim(ClaimsIdentity.DefaultNameClaimType,userName),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType,RoleEnum.User.GetDisplayName())
-            };
-            var identity = new ClaimsIdentity(claims,"ApplicationCookie",ClaimsIdentity.DefaultNameClaimType,ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+            return View();
         }
 
         public async Task Authenticate(User user)
