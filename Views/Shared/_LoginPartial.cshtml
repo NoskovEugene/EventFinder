@@ -1,12 +1,20 @@
 @using EventFinder.Models;
-@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity;
+@using EventFinder.Extensions;
 
 <style>
     .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important;
 }
+    .navbar{
+        text-align: center;
+    }
 </style>
+
+<title>
+    Register
+</title>
 
 @if(User.Identity.IsAuthenticated)
 {

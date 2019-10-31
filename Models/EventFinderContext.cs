@@ -13,6 +13,7 @@ namespace EventFinder.Models
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Event>().HasKey(e=>new {e.OwnerId});
             builder.Entity<User>().HasIndex(u=> new { u.Login}).IsUnique(true);
             builder.Entity<UserRole>().HasKey(table=> new { table.UserId, table.RoleId} );
         }
@@ -20,5 +21,7 @@ namespace EventFinder.Models
         public DbSet<User> User {get;set;}
 
         public DbSet<Role> Role {get;set;}
+
+        public DbSet<Event> Event {get;set;}
     }
 }

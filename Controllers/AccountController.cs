@@ -92,7 +92,7 @@ namespace EventFinder.Controllers
         {
             RoleEnum role = (RoleEnum)user.UserRoles.Where(x=> x.UserId == user.Id).FirstOrDefault().RoleId;
             var claims = new List<Claim>{
-                new Claim(ClaimsIdentity.DefaultNameClaimType,user.Email),
+                new Claim(ClaimsIdentity.DefaultNameClaimType,user.Login),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType,role.GetDisplayName())
             };
             var identity = new ClaimsIdentity(claims,"ApplicationCookie",ClaimsIdentity.DefaultNameClaimType,ClaimsIdentity.DefaultRoleClaimType);

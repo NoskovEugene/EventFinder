@@ -1,0 +1,6 @@
+@model EventFinder.Models.Entity.User
+
+@using (Html.BeginForm("Settings","Setting",FormMethod.Post))
+{
+    <label>Name:</label>@Html.TextBoxFor(m=>m.Name,"",new {@class="form-control"})
+}

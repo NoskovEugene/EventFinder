@@ -1,5 +1,9 @@
 @model EventFinder.Models.AccountModels.LoginModel
 
+<title>
+    Login
+</title>
+
 @using(Html.BeginForm("Login","Account",FormMethod.Post))
 {
     <div class="form-group">
@@ -13,5 +17,4 @@
     <div class="form-group">
         <button type="submit" class="btn">Login</button>
     </div>
-
 }
