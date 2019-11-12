@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-
 namespace EventFinder.Models.AccountModels
 {
     public class LoginModel

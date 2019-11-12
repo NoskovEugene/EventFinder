@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using EventFinder.Models.Repositories;
 
 namespace EventFinder
 {
@@ -31,7 +32,8 @@ namespace EventFinder
             services.AddMvcCore(options=> options.EnableEndpointRouting= false).AddAuthorization();
 
             services.AddTransient<DbContext,EventFinderContext>();
-
+            services.AddTransient(typeof(IRepositoryBase<>),typeof(RepositoryBase<>));
+            
             string connectionstring = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<EventFinderContext>
