@@ -6,37 +6,30 @@
     <title>@ViewData["Title"] - EventFinder</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/style-cal.css">
+    
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EventFinder</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item active">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @Html.Partial("_LoginPartial.cshtml")
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar">
+            <ul>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/bluelogo.png"></a></li>
+            </ul>
+            <ul class="menu">
+                <li><a>Мероприятия</a></li>
+                <li><a>Форум</a></li>
+                <li><a>Сотрудничество</a></li>
+                <li><a>О нас</a></li>
+            </ul>
+            <ul>
+                @Html.Partial("_LoginPartial")
+            </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="home-container">
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">
@@ -44,9 +37,15 @@
             &copy; 2019 - EventFinder - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+        <script src="~/js/clndr.js"></script>
+        <script src="~/js/script.js"></script>
+        <script src="~/js/slider-script.js"></script>
+        @RenderSection("Scripts", required: false)
 </body>
 </html>

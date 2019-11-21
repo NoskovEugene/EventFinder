@@ -2,7 +2,55 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to EventFinder</h1>
     
-</div>
+        <div class="calendar-slider">
+            <div class="base-form">
+                <div class="slider">
+                    <div class="item">
+                        <img src="~/img/slide1.jpg" alt="Первый слайд">
+                    </div>
+
+                    <div class="item">
+                        <img src="~/img/slide2.jpg" alt="Второй слайд">
+                    </div>
+
+                    <div class="item">
+                        <img src="~/img/slide3.jpg" alt="Третий слайд">
+                    </div>
+
+                    <a class="prev" onclick="minusSlide()">&#10094;</a>
+                    <a class="next" onclick="plusSlide()">&#10095;</a>
+
+                    <div class="slider-dots">
+                        <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+                        <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+                        <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="base-form">
+                <div class="head-cal">
+                    <h5 class="name-calendar">Календарь событий</h5>
+                </div>
+                <div class="body-cal">
+                    <div class="cal-field"></div>
+                    <div class="event-cal"></div>
+                </div>
+            </div>
+        </div>
+        <h4 class="name-event">КАТЕГОРИЯ МЕРОПРИЯТИЙ</h4>
+        <div class = "event-category">
+            <div class = "event-block"><img src="img/1.jpg" alt="Танцы"></div>
+            <div class = "event-block"><img src="img/2.jpg" alt="Совместные увлечения"></div>
+            <div class = "event-block"><img src="img/3.jpg" alt="Для старого поколения"></div>
+            <div class = "event-block"><img src="img/10.jpg" alt="Митинги"></div>
+            <div class = "event-block"><img src="img/4.png" alt="Путешествия"></div>
+            <div class = "event-block"><img src="img/5.jpg" alt="Музыка"></div>
+            <div class = "event-block"><img src="img/6.jpg" alt="Фестивали"></div>
+            <div class = "event-block"><img src="img/7.png" alt="Спорт"></div>
+            <div class = "event-block"><img src="img/8.jpg" alt="Кино"></div>
+            <div class = "event-block"><img src="img/9.jpeg" alt="Настольные игры"></div>
+            <div class = "event-block"><img src="img/11.jpg" alt="Свидания"></div>
+            <div class = "event-block"><img src="img/12.jpg" alt="Киберспорт"></div>
+        </div>
+    
