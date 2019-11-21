@@ -190,7 +190,7 @@ ul.menu > li, li.separator {
 
 .event-category {
   width: 1050px;
-  height: 650px;
+  height: 500px;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -200,13 +200,19 @@ ul.menu > li, li.separator {
 .event-block {
     min-width: 240px;
     height: 140px;
-    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);
     margin: auto;
     border-radius: 10px;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);
 }
 
 .name-event {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 25px;
+}
+
+.event-block > img {
+    width: 240px;
+    height: 140px;
+    border-radius: 10px;
 }
