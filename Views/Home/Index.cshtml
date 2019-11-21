@@ -2,7 +2,59 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to EventFinder</h1>
     
-</div>
+        <div class="calendar-slider">
+            <div class="base-form">
+                <div class="slider">
+                    <div class="item">
+                        <img src="~img/slide1.jpg" alt="Первый слайд">
+                    </div>
+
+                    <div class="item">
+                        <img src="~img/slide2.jpg" alt="Второй слайд">
+                    </div>
+
+                    <div class="item">
+                        <img src="~img/slide3.jpg" alt="Третий слайд">
+                    </div>
+
+                    <a class="prev" onclick="minusSlide()">&#10094;</a>
+                    <a class="next" onclick="plusSlide()">&#10095;</a>
+
+                    <div class="slider-dots">
+                        <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+                        <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+                        <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="base-form">
+                <div class="head-cal">
+                    <h5 class="name-calendar">Календарь событий</h5>
+                </div>
+                <div class="body-cal">
+                    <div class="cal-field"></div>
+                    <div class="event-cal"></div>
+                </div>
+            </div>
+        </div>
+        <h4 class="name-event">КАТЕГОРИЯ МЕРОПРИЯТИЙ</h4>
+        <div class="event-category">
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+            <div class="event-block"></div>
+        </div>
+    

@@ -1,38 +1,24 @@
 @using EventFinder.Models;
-@using Microsoft.AspNetCore.Identity;
-@using EventFinder.Extensions;
+@using Microsoft.AspNetCore.Identity
 
-<style>
-    .btn:focus, .btn:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
-    .navbar{
-        text-align: center;
-    }
-</style>
-
-<title>
-    Register
-</title>
-
-@if(User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated)
 {
-    <div class="btn-group">
-        <button class="btn btn-default">@User.Identity.Name</button>
-        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only"></span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li class="dropdown-item"><a>Settings</a></li>
-            <li class="divider"></li>
-            <li><a class="dropdown-item" href="/Account/Logout">Logout</a></li>
-        </ul>
-    </div>
+    <li><a>@User.Identity.Name</a></li>
+    <li class="separator">|</li>
+    <li><a href="/Account/Logout">Выход</a></li>
+
+    <!--<li class="nav-item">
+        <a class="nav-link text-dark">Hello </a>
+
+    </li>
+    <li class="nav-item"><a class="nav-link text-dark" href="/Account/Logout">Logout</a></li>-->
 }
 else
 {
-    <li class="nav-item"><a class="nav-link text-dark" href="/Account/Register">Register</a></li>
-    <li class="nav-item"><a class="nav-link text-dark" href="/Account/Login">Login</a></li>
+
+    <li><a href="/Account/Login">Вход</a></li>
+    <li class="separator">|</li>
+    <li><a href="/Account/Register">Регистрация</a></li>
+    <!--<li class="nav-item"><a class="nav-link text-dark" href="/Account/Register">Register</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" href="/Account/Login">Login</a></li>-->
 }

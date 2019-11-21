@@ -1,0 +1,161 @@
+.cal-field .clndr .clndr-controls {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.clndr-control-button, .month {
+    display: inline-block; 
+}
+
+.month {
+    width: 80%;
+    font-size: 16px;
+}
+
+.leftalign {
+    width: 10%;
+}
+
+.rightalign {
+   width: 10%;
+}
+
+.cal-field .clndr .clndr-controls .clndr-control-button .clndr-next-button {
+  cursor: pointer;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+}
+.cal-field .clndr .clndr-controls .clndr-control-button .clndr-previous-button {
+  cursor: pointer;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+}
+.cal-field .clndr .clndr-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.cal-field .clndr .clndr-table .header-days {
+  height: 30px;
+  font-size: 14px;
+  background: #ffffff;
+}
+.cal-field .clndr .clndr-table .header-days .header-day {
+  vertical-align: middle;
+  text-align: center;
+  border-left: 1px solid none;
+  border-top: 1px solid none;
+  color: #414141;
+}
+.cal-field .clndr .clndr-table .header-days .header-day:last-child {
+  border-right: 1px solid none;
+}
+.cal-field .clndr .clndr-table tr {
+  height: 30px;
+}
+.cal-field .clndr .clndr-table tr td {
+    vertical-align: middle;
+    text-align: center;
+}
+.cal-field .clndr .clndr-table tr .day {
+  border-left: 1px solid #E7E7E7;
+  border-top: 1px solid #E7E7E7;
+  width: 30px;
+  height: 30px;
+}
+.cal-field .clndr .clndr-table tr .day:hover {
+  background: #eee;
+}
+.cal-field .clndr .clndr-table tr .day.today,
+.cal-field .clndr .clndr-table tr .day.my-today {
+  background: #35BBFF;
+    color: white;
+}
+.cal-field .clndr .clndr-table tr .day.today:hover,
+.cal-field .clndr .clndr-table tr .day.my-today:hover {
+  background: #169DFE;
+}
+.cal-field .clndr .clndr-table tr .day.today.event,
+.cal-field .clndr .clndr-table tr .day.my-today.event {
+  background: #A4E4FF;
+}
+.cal-field .clndr .clndr-table tr .day.event,
+.cal-field .clndr .clndr-table tr .day.my-event {
+  background: #C5EFFF;
+}
+.cal-field .clndr .clndr-table tr .day.event:hover,
+.cal-field .clndr .clndr-table tr .day.my-event:hover {
+  background: #A4E4FF;
+}
+.cal-field .clndr .clndr-table tr .day.inactive,
+.cal-field .clndr .clndr-table tr .day.my-inactive {
+  background: #ddd;
+}
+.cal-field .clndr .clndr-table tr .day:last-child {
+  border-right: 1px solid #E7E7E7;
+}
+.cal-field .clndr .clndr-table tr .day .day-contents {
+  
+  text-align: center;
+    vertical-align: middle;
+}
+.cal-field .clndr .clndr-table tr .empty,
+.cal-field .clndr .clndr-table tr .adjacent-month,
+.cal-field .clndr .clndr-table tr .my-empty,
+.cal-field .clndr .clndr-table tr .my-adjacent-month {
+  border-left: 1px solid #E7E7E7;
+  border-top: 1px solid #E7E7E7;
+  width: 30px;
+  height: 30px;
+  background: #E7E7E7;
+    color: white;
+}
+.cal-field .clndr .clndr-table tr .empty:hover,
+.cal-field .clndr .clndr-table tr .adjacent-month:hover,
+.cal-field .clndr .clndr-table tr .my-empty:hover,
+.cal-field .clndr .clndr-table tr .my-adjacent-month:hover {
+  background: #ddd;
+}
+.cal-field .clndr .clndr-table tr .empty:last-child,
+.cal-field .clndr .clndr-table tr .adjacent-month:last-child,
+.cal-field .clndr .clndr-table tr .my-empty:last-child,
+.cal-field .clndr .clndr-table tr .my-adjacent-month:last-child {
+  border-right: 1px solid #E7E7E7;
+}
+.cal-field .clndr .clndr-table tr:last-child .day,
+.cal-field .clndr .clndr-table tr:last-child .my-day {
+  border-bottom: 1px solid #E7E7E7;
+}
+.cal-field .clndr .clndr-table tr:last-child .empty,
+.cal-field .clndr .clndr-table tr:last-child .my-empty {
+  border-bottom: 1px solid #E7E7E7;
+}
+
+.clndr-next-button,
+.clndr-previous-button,
+.clndr-next-year-button,
+.clndr-previous-year-button {
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+}
+.clndr-next-button.inactive,
+.clndr-previous-button.inactive,
+.clndr-next-year-button.inactive,
+.clndr-previous-year-button.inactive {
+  opacity: 0.5;
+  cursor: default;
+}
