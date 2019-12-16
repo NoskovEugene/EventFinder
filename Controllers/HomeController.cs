@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EventFinder.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using EventFinder.Models.Enums;
-using EventFinder.Extensions;
 namespace EventFinder.Controllers
 {
     [Authorize()]
