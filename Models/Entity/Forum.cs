@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using System;
 using EventFinder.Models.EntitiesAbstraction;
 
@@ -10,5 +11,7 @@ namespace EventFinder.Models.Entity
         public virtual User Owner {get;set;}
 
         public int OwnerId{get;set;}
+
+        public string Theme{get;set;}
     }
 }

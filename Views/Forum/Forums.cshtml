@@ -1,0 +1,32 @@
+@using EventFinder.Models.Entity
+@model List<Forum>
+
+<html>
+    <div>
+        
+        <ul>
+            @if (Model != null && Model.Count != 0)
+            {
+                @foreach (var item in Model)
+                { 
+                  <li>
+                      <p>
+                          Owner: @item.Owner.Name
+                      </p>
+                      <p>
+                          Theme: @item.Theme
+                      </p>
+                      <p>
+                          Creation date: @item.CreationTime
+                      </p>
+                  </li>
+                }
+
+            }else{
+                <p>
+                    Nothing here
+                </p>
+            }
+        </ul>
+    </div>
+</html>

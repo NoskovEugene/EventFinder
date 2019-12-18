@@ -11,5 +11,10 @@ namespace EventFinder.Extensions
             var role = ((ClaimsIdentity)identity).Claims.Where(x=> x.Type == ClaimsIdentity.DefaultRoleClaimType).ToList();
             return role.Count != 0 ? role[0].Value : string.Empty;
         }
+        public static string GetLogin(this IIdentity identity)
+        {
+            var login = ((ClaimsIdentity)identity).Claims.Where(x=> x.Type == ClaimsIdentity.DefaultNameClaimType).ToList();
+            return login.Count != 0 ? login[0].Value : string.Empty;
+        }
     }
 }
