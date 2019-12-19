@@ -63,5 +63,30 @@ namespace EventFinder.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult ForumView(int? id)
+        {
+            var forum = ForumRepository.Query(x=> x.Id == id).FirstOrDefault();
+            var messages = new List<ForumMessage>();
+            if(forum != null){
+                messages = ForumMessageRepository.Query(x=> x.ForumId == forum.Id).ToList();
+            }
+            return View(new Tuple<Forum,List<ForumMessage>>(forum,messages));
+        }
+
+        [HttpGet]
+        public IActionResult CreateMessage(int id,string message)
+        {
+            var login = HttpContext.User.Identity.GetLogin();
+            var userid = UserRepository.Query(x=> x.Login == login).FirstOrDefault()!.Id;
+            ForumMessageRepository.Insert(new ForumMessage()
+            {
+                UserId = userid,
+                ForumId = id,
+                Message = message
+            });
+            return RedirectToAction($"ForumView","forum",new{ id = id});
+        }
+
     }
 }

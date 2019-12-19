@@ -1,32 +1,22 @@
 @using EventFinder.Models.Entity
 @model List<Forum>
 
-<html>
-    <div>
-        
-        <ul>
-            @if (Model != null && Model.Count != 0)
-            {
-                @foreach (var item in Model)
-                { 
-                  <li>
-                      <p>
-                          Owner: @item.Owner.Name
-                      </p>
-                      <p>
-                          Theme: @item.Theme
-                      </p>
-                      <p>
-                          Creation date: @item.CreationTime
-                      </p>
-                  </li>
-                }
+<script>
+    function OpenForum(id){
+        location.href = `/forum/forumview?id=${id}` ;
+    }
+</script>
 
-            }else{
-                <p>
-                    Nothing here
-                </p>
+<html>
+    @if(Model != null && Model.Count != 0){
+        <div class="list-group" style="margin:5px">
+            @foreach (var item in Model)
+            {
+                <button class="list-group-item" onclick="OpenForum(@item.Id)">ID: @item.Id, Тема: @item.Theme</button>   
             }
-        </ul>
-    </div>
+        </div>
+    }
+    else{
+
+    }
 </html>

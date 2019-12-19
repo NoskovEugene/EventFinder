@@ -1,0 +1,52 @@
+@using EventFinder.Models.Entity;
+@model Tuple<Forum,List<ForumMessage>>;
+
+<script>
+    function SendMessage(id,message)
+    {
+        location.href = `/forum/createmessage?id=${id}&message=${message}`
+    }
+</script>
+<style>
+    div.card{
+        margin: 5px;
+    }
+</style>
+<html>
+    @if(Model != null){
+        <div class="card" style="border: solid 2px black">
+            <div class="card-body">
+                <div class="card-title">
+                    Theme: @Model.Item1.Theme
+                </div>
+                <div class="card-subtitle mb-2 text-muted">
+                    <p>
+                        Id: @Model.Item1.Id
+                    </p>
+                    <p>
+                        Owner: @Model.Item1.Owner.Login
+                    </p>
+                </div>
+            </div>
+        </div>
+        @foreach (var item in Model.Item2)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        @item.User.Login
+                    </div>
+                    <div class="card-text">
+                        @item.Message
+                    </div>
+                </div>
+            </div>
+        }
+        <textarea id="newMessage" class="form-control"></textarea>
+        <button onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);">Send</button>
+    }else{
+        <p>
+            Nothing here
+        </p>
+    }
+</html>
