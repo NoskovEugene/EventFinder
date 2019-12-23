@@ -14,11 +14,10 @@
 
 @media (max-width: 700px){
     footer { align-items: center; }
-    .start-img { display: none; }
+    .hello { display: none; }
     .header-top { box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2) }
     footer .logo-media {flex-direction: column; align-items: center;}
     footer img { margin-bottom: 30px}
-    footer .nav-main {width: 60%}
     
 }
 
@@ -30,6 +29,8 @@
     .body-cal { position: relative; }
     .open { width: 100%; background-color: white; transition: 0.5s}
     .close {width: 0;transition: 0.5s}
+    .nav-footer { flex-direction: column; align-items: center; }
+    .nav-footer div{ margin-bottom: 10px;}
 
 }
 
@@ -40,6 +41,7 @@
     .burger-menu { height: 32px; width: 45px;}
     .header-top-wrapper {height: 80px; justify-content: space-between;}
     .slider .item img, .calendar-slider .base-form:first-child, .slider {height: 250px;}
+    
 }
 
 
@@ -49,4 +51,5 @@
     .header-top { box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2) }
     .calendar-slider { margin: 0 2.5% 0 2.5%; }
     .slider .item img,.calendar-slider .base-form:first-child, .slider  {height: 225px;}
+    
 }

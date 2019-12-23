@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - EventFinder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/img/favicon.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="~/css/style.css">
     <link rel="stylesheet" type="text/css" href="~/css/style-slider.css">
     <link rel="stylesheet" type="text/css" href="~/css/style-cal.css">
@@ -48,19 +49,16 @@
         @RenderBody()
     </main>
     <footer>
-        <nav class="nav-main">
-            <ul>
-                <li><a>Мероприятия</a></li>
-                <li><a href="/forum/forums">Форум</a></li>
-                <li><a>Сотрудничество</a></li>
-                <li><a>О нас</a></li>
-            </ul>
-        </nav>
+        <div class="nav-footer">
+            <div><a>Мероприятия</a></div>
+            <div><a href="/forum/forums">Форум</a></div>
+            <div><a>Сотрудничество</a></div>
+            <div><a>О нас</a></div>
+        </div>
         <div class="logo-media">
             <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/footerlogo.png"></a>
             <div class="media">
-                <div class="icon"><a href=""><span class="fab fa-vk"></span></a></div>
-                <div class="icon"><a href=""><span class="fab fa-instagram"></span></a></div>
+                <div class="icon"><a href="https://vk.com/theeventfinder"><span class="fab fa-vk"></span></a></div>
             </div>
         </div>
     </footer>
