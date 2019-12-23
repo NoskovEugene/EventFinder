@@ -1,23 +1,26 @@
 @model EventFinder.Models.AccountModels.RegisterModel
 
-@using(Html.BeginForm("Register","Account",FormMethod.Post))
-{
-    <div class="form-group input-group">
-        @Html.TextBoxFor(x=>x.Email,"",new {@class="form-control", @placeholder="Введите Email"})
-    </div>
-    <div class="form-group">
-        @Html.TextBoxFor(x=>x.Login,"",new { @class="form-control", @placeholder="Введите логин"})
-    </div>
-    <div class="form-group">
-        @Html.PasswordFor(x=>x.Password,new {@class="form-control", @placeholder="Введите пароль"})
-    </div>
-    <div class="form-group">
-        @Html.PasswordFor(x=>x.ConfirmPassword,new {@class="form-control", @placeholder="Подтвердите пароль"})
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn">Регистрация</button>
-    </div>
-    
-}
 
-
+<div class="wrap-auth">
+    <div class="logup">
+        <h2><span>Register</span></h2>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            <div class="form-group input-group">
+                @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control", @placeholder = "Введите Email" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.Login, "", new { @class = "form-control", @placeholder = "Введите логин" })
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Введите пароль" })
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control", @placeholder = "Подтвердите пароль" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Register</button>
+            </div>
+        }
+    </div>
+</div>

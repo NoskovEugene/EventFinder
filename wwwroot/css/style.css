@@ -26,6 +26,12 @@ html, body {
     font-size: 20px;
 }
 
+body {
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+}
+
 button {
     padding: 0;
     border: none;
@@ -189,7 +195,7 @@ ul.auth li, ul.auth .fas.fa-user{
 /*--------------------------------------------------------START IMAGE-----------------------------------------------*/
 
 .start-img {
-    background-image: url(img/start.jpg);
+    background-image: url(/img/start.jpg);
     background-size: cover;
     background-position: top;
     width: 100%;
@@ -357,11 +363,12 @@ footer {
     width: 100%;
     background-color: #91C8FF;
     bottom: 0;
+    left: 0;
     color: #B1B0AF;
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items:   center;
+    align-items: center;
 }
 
 footer .nav-main, footer .logo-media {

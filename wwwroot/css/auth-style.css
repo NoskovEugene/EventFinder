@@ -1,0 +1,66 @@
+﻿.btn {
+    width: 150px;
+    height: 40px;
+    background-color: #0093FD;
+    margin-top: 10px;
+}
+
+div.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.form-group input.form-control {
+    width: 180px;
+    height: 30px;
+    border: 0;
+    border: solid 1px black;
+    border-radius: 30px;
+    margin: 10px 0 10px 0;
+    outline: inherit;
+    font-size: 12pt;
+}
+
+input.form-control:focus {
+    border: 1px solid #0093FD;
+    border-radius: 30px;
+}
+
+.wrap-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+    height: calc(100vh - 398px);
+}
+
+.login, .logup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    border: solid 1px black;
+    width: 250px;
+}
+
+.login {
+    height: 320px;
+}
+
+.logup {
+    height: 400px;
+}
+
+.logup input::placeholder {
+    text-align:center;
+}
+input.form-control:not([value=""]) {
+    text-align: center;
+    font-size: 14pt;
+}
+

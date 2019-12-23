@@ -52,8 +52,8 @@ namespace EventFinder
 
             
             //check database
-            var db = services.BuildServiceProvider().GetService<DbContext>();
-            db.Database.Migrate();
+            /*var db = services.BuildServiceProvider().GetService<DbContext>();
+            db.Database.Migrate();*/
 
         }
 

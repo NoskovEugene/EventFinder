@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EventFinder</title>
-    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="style-slider.css">
-    <link rel="stylesheet" type="text/css" href="style-cal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style-slider.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style-cal.css">
+    <link rel="stylesheet" type="text/css" href="~/css/auth-style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/mediastyle.css">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="mediastyle.css">
 </head>
 <body>
     <header class="header-top">
         <div class="header-top-wrapper">
-            <a class="logo-header" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-img-big" src="img/bluelogo.png"></a>
-            <a class="logo-header" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-img-min" src="img/logo-min.png"></a>
+            <a class="logo-header" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-img-big" src="~/img/bluelogo.png"></a>
+            <a class="logo-header" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-img-min" src="~/img/logo-min.png"></a>
             <div class="burger-menu">
                 <div></div>
                 <div></div>
@@ -56,7 +57,7 @@
             </ul>
         </nav>
         <div class="logo-media">
-            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="img/footerlogo.png"></a>
+            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/footerlogo.png"></a>
             <div class="media">
                 <div class="icon"><a href=""><span class="fab fa-vk"></span></a></div>
                 <div class="icon"><a href=""><span class="fab fa-instagram"></span></a></div>
@@ -65,13 +66,14 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/script-slider.js" asp-append-version="true"></script>
     <script src="~/js/clndr.js"></script>
     <script src="~/js/script.js"></script>
-    <script src="~/js/slider-script.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
