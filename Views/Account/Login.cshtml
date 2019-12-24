@@ -1,11 +1,11 @@
 @model EventFinder.Models.AccountModels.LoginModel
 
-<title>
-    Login
-</title>
+@{
+    ViewData["Title"] = "Login";
+}
 
-<div class="wrap-auth">
-    <div class="login">
+<div class="wrap-auth wrapper">
+    <div class="login border-group">
         <h2><span>Login</span></h2>
         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
         {

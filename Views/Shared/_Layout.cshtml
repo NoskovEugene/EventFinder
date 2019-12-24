@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/style-slider.css">
     <link rel="stylesheet" type="text/css" href="~/css/style-cal.css">
     <link rel="stylesheet" type="text/css" href="~/css/auth-style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/forum-style.css">
     <link rel="stylesheet" type="text/css" href="~/css/mediastyle.css">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -26,7 +27,7 @@
             <nav class="nav-main">
                 <ul>
                     <li><a>Мероприятия</a></li>
-                    <li><a href="/forum/forums">Форум</a></li>
+                    <li><a asp-controller="Forum" asp-action="Forums">Форум</a></li>
                     <li><a>Сотрудничество</a></li>
                     <li><a>О нас</a></li>
                 </ul>
@@ -40,7 +41,7 @@
         <ul class="submenu">
             @Html.Partial("_LoginPartial")
             <li><a>Мероприятия</a></li>
-            <li><a href="/forum/forums">Форум</a></li>
+            <li><a asp-controller="Forum" asp-action="Forums">Форум</a></li>
             <li><a>Сотрудничество</a></li>
             <li><a>О нас</a></li>
         </ul>
@@ -51,7 +52,7 @@
     <footer>
         <div class="nav-footer">
             <div><a>Мероприятия</a></div>
-            <div><a href="/forum/forums">Форум</a></div>
+            <div><a asp-controller="Forum" asp-action="Forums">Форум</a></div>
             <div><a>Сотрудничество</a></div>
             <div><a>О нас</a></div>
         </div>

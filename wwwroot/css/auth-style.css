@@ -1,11 +1,4 @@
-﻿.btn {
-    width: 150px;
-    height: 40px;
-    background-color: #0093FD;
-    margin-top: 10px;
-}
-
-div.form-group {
+﻿div.form-group {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -29,16 +22,6 @@ input.form-control:focus {
     border-radius: 10px;
 }
 
-.wrap-auth {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    width: 100%;
-    height: calc(100vh - 398px);
-}
-
 .login, .logup {
     display: flex;
     flex-direction: column;
@@ -54,13 +37,5 @@ input.form-control:focus {
 
 .logup {
     height: 400px;
-}
-
-input::placeholder {
-    text-align:center;
-}
-input.form-control:not([value=""]) {
-    text-align: center;
-    font-size: 14pt;
 }
 

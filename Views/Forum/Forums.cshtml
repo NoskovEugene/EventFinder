@@ -1,22 +1,68 @@
 @using EventFinder.Models.Entity
 @model List<Forum>
 
+@{
+    ViewData["Title"] = "Беседы";
+}
+
 <script>
-    function OpenForum(id){
-        location.href = `/forum/forumview?id=${id}` ;
+    function OpenForum(id) {
+        location.href = `/forum/forumview?id=${id}`;
     }
 </script>
 
-<html>
-    @if(Model != null && Model.Count != 0){
-        <div class="list-group" style="margin:5px">
-            @foreach (var item in Model)
-            {
-                <button class="list-group-item" onclick="OpenForum(@item.Id)">ID: @item.Id, Тема: @item.Theme</button>   
-            }
-        </div>
-    }
-    else{
+<div class="wrap-forum-forums  wrapper">
+    <table class="table-forum">
+        @if (Model != null && Model.Count != 0)
+        {
+            <thead>
+                <tr>
+                    <td>
+                        Номер
+                    </td>
+                    <td>
+                        Тема
+                    </td>
+                    <td>
+                        Автор
+                    </td>
+                    <td>
+                        Создана
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Theme
+                        </td>
+                        <td>
+                            @item.Owner.Login
+                        </td>
+                        <td>
+                            @item.CreationTime
+                        </td>
+                        <td>
+                            <button class="list-group-item" onclick="OpenForum(@item.Id)">Перейти</button>
+                        </td>
+                    </tr>
 
-    }
-</html>
+                }
+            </tbody>
+
+        }
+        else
+        {
+
+        }
+    </table>
+
+    <div><span><a asp-controller="Forum" asp-action="CreateForum">Создайте</a> новую беседу прямо сейчас!</span></div>
+</div>

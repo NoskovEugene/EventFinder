@@ -13,7 +13,16 @@ a {
     font-size: 20px;
 }
 
+input[type="text"], input[type="password"] {
+    font-size: 12pt;
+    text-align: center;
+    vertical-align: middle;
+}
 
+input[placeholder] {
+    text-align: start;
+    vertical-align: middle;
+}
 
 /*-----------------------------------------------------BASE---------------------------------------------------------*/
 html {
@@ -40,19 +49,27 @@ button {
 
 .btn {
     color: white;
-    background-color: #F84A41; 
     cursor: pointer;
-    width: 200px;
-    height: 60px;
     border-radius: 50px;
+    width: 150px;
+    height: 40px;
+    background-color: #0093FD;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .logo-header, .logo, .burger-menu {
     cursor: pointer;
 }
 
+.header-top {
+    box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2);
+    height:90px;
+    
+}
+
 main {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     
 }
 
@@ -60,8 +77,29 @@ ul {
     list-style: none;
 }
 
-/*-------------------------------------------------------HEADER-----------------------------------------------------*/
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+    height: calc(100vh - 358px);
+}
 
+.border-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 25px;
+    border: solid 1px black;
+    width: 250px;
+}
+
+.border-group h2{
+    text-align: center;
+}
+/*-------------------------------------------------------HEADER-----------------------------------------------------*/
 .header-top-wrapper {
     display: flex;
     flex-direction: row;
@@ -196,9 +234,10 @@ ul.auth li, ul.auth .fas.fa-user{
     margin: 0 10px 0 0 ;
 }
 
-
+header ul {
+    margin: 0;
+}
 /*--------------------------------------------------------START IMAGE-----------------------------------------------*/
-
 .hello {
     position: relative;
 }
@@ -417,6 +456,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
 }
 
 .nav-footer, footer .logo-media {

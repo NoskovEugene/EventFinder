@@ -1,20 +1,22 @@
 @using EventFinder.Models.Entity;
-@model Tuple<Forum,List<ForumMessage>>;
+@model Tuple<Forum, List<ForumMessage>>;
+
+@{
+    ViewData["Title"] = @Model.Item1.Theme;
+}
 
 <script>
-    function SendMessage(id,message)
-    {
+    function SendMessage(id, message) {
         location.href = `/forum/createmessage?id=${id}&message=${message}`
     }
 </script>
-<style>
-    div.card{
-        margin: 5px;
-    }
-</style>
-<html>
-    @if(Model != null){
-        <div class="card" style="border: solid 2px black">
+
+<div class="wrapper forum-view">
+
+    @if (Model != null)
+    {
+        <!--
+            <div class="card" style="border: solid 2px black">
             <div class="card-body">
                 <div class="card-title">
                     Theme: @Model.Item1.Theme
@@ -29,24 +31,37 @@
                 </div>
             </div>
         </div>
-        @foreach (var item in Model.Item2)
-        {
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title">
-                        @item.User.Login
-                    </div>
-                    <div class="card-text">
-                        @item.Message
-                    </div>
+        -->
+        <div class="wrap-dialog">
+            <h3>@Model.Item1.Theme</h3>
+            <div class="dialog">
+                <div class="message-box">
+                    @foreach (var item in Model.Item2)
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text">
+                                    @item.Message
+                                </div>
+                                <div class="card-title">
+                                    @item.User.Login
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
-        }
-        <textarea id="newMessage" class="form-control"></textarea>
-        <button onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);">Send</button>
-    }else{
+            <div class="send-panel">
+                <textarea id="newMessage" class="input-area" placeholder="message"></textarea>
+                <button class="btn" onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);">Send</button>
+            </div>
+        </div>
+    }
+    else
+    {
         <p>
             Nothing here
         </p>
     }
-</html>
+
+</div>
