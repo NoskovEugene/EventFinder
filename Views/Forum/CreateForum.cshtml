@@ -1,0 +1,21 @@
+@using EventFinder.Models.ForumModels
+@model CreateForum
+
+@{
+    ViewData["Title"] = "Создать беседу";
+}
+
+<div class="wrapper">
+    <div class="createforum border-group">
+        <h2>Создать<br>беседу</h2>
+        @using (Html.BeginForm("CreateForum", "forum", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.Theme, "", new { @class = "form-control", @placeholder = "Тема форума" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Создать</button>
+            </div>
+        }
+    </div>
+</div>

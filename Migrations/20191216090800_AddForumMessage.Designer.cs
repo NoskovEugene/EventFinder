@@ -3,15 +3,17 @@ using System;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191216090800_AddForumMessage")]
+    partial class AddForumMessage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,29 +64,6 @@ namespace EventFinder.Migrations
                     b.ToTable("Event");
                 });
 
-            modelBuilder.Entity("EventFinder.Models.Entity.Forum", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("OwnerId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Theme")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("Forum");
-                });
-
             modelBuilder.Entity("EventFinder.Models.Entity.ForumMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -102,8 +81,6 @@ namespace EventFinder.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ForumId");
 
                     b.HasIndex("UserId");
 
@@ -185,23 +162,8 @@ namespace EventFinder.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EventFinder.Models.Entity.Forum", b =>
-                {
-                    b.HasOne("EventFinder.Models.Entity.User", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("EventFinder.Models.Entity.ForumMessage", b =>
                 {
-                    b.HasOne("EventFinder.Models.Entity.Forum", "Forum")
-                        .WithMany()
-                        .HasForeignKey("ForumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EventFinder.Models.Entity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")

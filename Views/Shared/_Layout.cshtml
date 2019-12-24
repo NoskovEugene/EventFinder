@@ -2,50 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EventFinder</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/img/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style-slider.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style-cal.css">
+    <link rel="stylesheet" type="text/css" href="~/css/auth-style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/forum-style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/mediastyle.css">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/style-cal.css">
-    
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <ul>
-                <li><a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/bluelogo.png"></a></li>
-            </ul>
-            <ul class="menu">
-                <li><a>Мероприятия</a></li>
-                <li><a>Форум</a></li>
-                <li><a>Сотрудничество</a></li>
-                <li><a>О нас</a></li>
-            </ul>
-            <ul>
+    <header class="header-top">
+        <div class="header-top-wrapper">
+            <a class="logo-header" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-img-big" src="~/img/bluelogo.png"></a>
+            <a class="logo-header" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-img-min" src="~/img/logo-min.png"></a>
+            <div class="burger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="nav-main">
+                <ul>
+                    <li><a>Мероприятия</a></li>
+                    <li><a asp-controller="Forum" asp-action="Forums">Форум</a></li>
+                    <li><a>Сотрудничество</a></li>
+                    <li><a>О нас</a></li>
+                </ul>
+            </nav>
+            <ul class="auth">
                 @Html.Partial("_LoginPartial")
             </ul>
-        </nav>
+        </div>
     </header>
-    <div class="home-container">
+    <nav class="nav-main pop-up">
+        <ul class="submenu">
+            @Html.Partial("_LoginPartial")
+            <li><a>Мероприятия</a></li>
+            <li><a asp-controller="Forum" asp-action="Forums">Форум</a></li>
+            <li><a>Сотрудничество</a></li>
+            <li><a>О нас</a></li>
+        </ul>
+    </nav>
+    <main>
         @RenderBody()
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - EventFinder - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </main>
+    <footer>
+        <div class="nav-footer">
+            <div><a>Мероприятия</a></div>
+            <div><a asp-controller="Forum" asp-action="Forums">Форум</a></div>
+            <div><a>Сотрудничество</a></div>
+            <div><a>О нас</a></div>
+        </div>
+        <div class="logo-media">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/footerlogo.png"></a>
+            <div class="media">
+                <div class="icon"><a href="https://vk.com/theeventfinder"><span class="fab fa-vk"></span></a></div>
+            </div>
         </div>
     </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-        <script src="~/js/clndr.js"></script>
-        <script src="~/js/script.js"></script>
-        <script src="~/js/slider-script.js"></script>
-        @RenderSection("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/script-slider.js" asp-append-version="true"></script>
+    <script src="~/js/clndr.js"></script>
+    <script src="~/js/script.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

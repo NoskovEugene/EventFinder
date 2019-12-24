@@ -3,10 +3,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <li><a>@User.Identity.Name</a></li>
-    <li class="separator">|</li>
-    <li><a href="/Account/Logout">Выход</a></li>
-
+    <li class="auth-item"><span class="fas fa-user"></span><a>@User.Identity.Name</a>|<a href="/Account/Logout">Выход</a></li>
     <!--<li class="nav-item">
         <a class="nav-link text-dark">Hello </a>
 
@@ -15,10 +12,7 @@
 }
 else
 {
-
-    <li><a href="/Account/Login">Вход</a></li>
-    <li class="separator">|</li>
-    <li><a href="/Account/Register">Регистрация</a></li>
+    <li class="auth-item"><span class="fas fa-user"></span><a href="/Account/Login">Вход</a>|<a href="/Account/Register">Регистрация</a></li>
     <!--<li class="nav-item"><a class="nav-link text-dark" href="/Account/Register">Register</a></li>
     <li class="nav-item"><a class="nav-link text-dark" href="/Account/Login">Login</a></li>-->
 }

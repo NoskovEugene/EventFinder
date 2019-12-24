@@ -16,6 +16,7 @@ namespace EventFinder.Models
             builder.Entity<Event>().HasKey(e=>new {e.OwnerId});
             builder.Entity<User>().HasIndex(u=> new { u.Login}).IsUnique(true);
             builder.Entity<UserRole>().HasKey(table=> new { table.UserId, table.RoleId} );
+            
         }
 
         public DbSet<User> User {get;set;}
@@ -23,5 +24,9 @@ namespace EventFinder.Models
         public DbSet<Role> Role {get;set;}
 
         public DbSet<Event> Event {get;set;}
+
+        public DbSet<ForumMessage> ForumMessage {get;set;}
+
+        public DbSet<Forum> Forum {get;set;}
     }
 }
