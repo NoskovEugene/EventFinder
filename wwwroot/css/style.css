@@ -393,11 +393,13 @@ a.arrow > img {
 /*Event*/
 
 .event-category {
-  width: 70%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-around;*/
+    align-items: center;
+    justify-content:center;
 }
 
 .event-block {
@@ -407,7 +409,7 @@ a.arrow > img {
     margin: 10px 5px 10px 5px;
     border-radius: 10px;
     box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);
-    transform: scale(1);
+    transform: scale(0.98);
 }
 
 .name-event {
@@ -442,7 +444,7 @@ a.arrow > img {
 }
 
 .event-block:hover {
-    transform: scale(0.98);
+    transform: scale(1);
 }
 /*--------------------------------------------------------FOOTER---------------------------------------------------*/
 
