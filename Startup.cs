@@ -46,6 +46,8 @@ namespace EventFinder
                 }
             );
 
+            services.AddControllers();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(Options =>{
                 Options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
             });
@@ -74,6 +76,11 @@ namespace EventFinder
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers(); 
+            });
 
             app.UseAuthentication();
 
