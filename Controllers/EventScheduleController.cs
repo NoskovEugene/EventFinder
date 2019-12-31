@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventFinder.Models;
+using EventFinder.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,11 +13,21 @@ namespace EventFinder
     [Route("api/[controller]")]
     public class EventScheduleController : Controller
     {
+        private readonly EventFinderContext _context;
+        public EventScheduleController(EventFinderContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<IEnumerable<Event>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var category = new Category { Name = "Dances"};
+            _context.Category.Add(category);
+            _context.SaveChanges();
+            var dance = new Event {  };
+            return _context.Event.ToList();
         }
 
         // GET api/<controller>/5

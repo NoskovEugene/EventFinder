@@ -3,15 +3,17 @@ using System;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191231174238_fix User")]
+    partial class fixUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,14 +95,8 @@ namespace EventFinder.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int?>("EventId")
-                        .HasColumnType("integer");
 
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
@@ -109,10 +105,6 @@ namespace EventFinder.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("EventId");
 
                     b.HasIndex("OwnerId");
 
@@ -227,14 +219,6 @@ namespace EventFinder.Migrations
 
             modelBuilder.Entity("EventFinder.Models.Entity.Forum", b =>
                 {
-                    b.HasOne("EventFinder.Models.Entity.Category", "Category")
-                        .WithMany("Forums")
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("EventFinder.Models.Entity.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId");
-
                     b.HasOne("EventFinder.Models.Entity.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")

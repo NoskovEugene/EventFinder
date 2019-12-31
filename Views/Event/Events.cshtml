@@ -1,0 +1,61 @@
+﻿@model List<EventFinder.Models.Entity.Event>
+@{
+    ViewData["Title"] = "Events";
+}
+
+
+
+<div class="wrap-forum-forums wrapper">
+    <table class="table-forum">
+        <thead>
+            <tr>
+                <td>
+                    Название
+                </td>
+                <td>
+                    Категория
+                </td>
+                <td>
+                    День события
+                </td>
+                <td>
+                    Место события
+                </td>
+                <td>
+                    Описание
+                </td>
+                <td>
+                    Создатель
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <div>@Html.DisplayFor(modelItem => item.Name)</div>
+                    </td>
+                    <td>
+                        <div>@Html.DisplayFor(modelItem => item.Category.Name)</div>
+                    </td>
+                    <td>
+                        <div>@Html.DisplayFor(modelItem => item.EventDate)</div>
+                    </td>
+                    <td>
+                        <div>@Html.DisplayFor(modelItem => item.Place)</div>
+                    </td>
+                    <td>
+                        <div>@Html.DisplayFor(modelItem => item.Description)</div>
+                    </td>
+                    <td>
+                        <div>@Html.DisplayFor(modelItem => item.Owner.Login)</div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div><span><a asp-controller="Event" asp-action="CreateEvent">Создайте</a> новое событие!</span></div>
+</div>
+

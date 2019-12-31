@@ -13,5 +13,13 @@ namespace EventFinder.Models.Entity
         public int OwnerId{get;set;}
 
         public string Theme{get;set;}
+
+        public virtual Category Category { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        public virtual Event Event { get; set; }
+
+        public int? EventId { get; set; }
     }
 }

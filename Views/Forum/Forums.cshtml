@@ -30,29 +30,59 @@
                         Создана
                     </td>
                     <td>
+                        Событие
+                    </td>
+                    <td>
+                        Категория
+                    </td>
+                    <td>
                     </td>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Theme
+                    </td>
+                    <td>
+                        @item.Owner.Login
+                    </td>
+                    <td>
+                        @item.CreationTime
+                    </td>
+                    @if (item.EventId == null)
+                    {
                         <td>
-                            @item.Id
+                            Нет события
                         </td>
+                    }
+                    else
+                    {
                         <td>
-                            @item.Theme
+                            @item.Event.Name
                         </td>
+                    }
+                    @if (item.CategoryId == null)
+                    {
                         <td>
-                            @item.Owner.Login
+                            Нет Категории
                         </td>
+                    }
+                    else
+                    {
                         <td>
-                            @item.CreationTime
+                            @item.Category.Name
                         </td>
-                        <td>
-                            <button class="list-group-item" onclick="OpenForum(@item.Id)">Перейти</button>
-                        </td>
-                    </tr>
+                    }
+                    <td>
+                        <button class="list-group-item" onclick="OpenForum(@item.Id)">Перейти</button>
+                    </td>
+                </tr>
 
                 }
             </tbody>

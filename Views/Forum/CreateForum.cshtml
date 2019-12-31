@@ -5,17 +5,23 @@
     ViewData["Title"] = "Создать беседу";
 }
 
-<div class="wrapper">
-    <div class="createforum border-group">
-        <h2>Создать<br>беседу</h2>
-        @using (Html.BeginForm("CreateForum", "forum", FormMethod.Post))
-        {
-            <div class="form-group">
-                @Html.TextBoxFor(x => x.Theme, "", new { @class = "form-control", @placeholder = "Тема форума" })
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn">Создать</button>
-            </div>
-        }
+    <div class="wrapper">
+        <form asp-controller="Forum" asp-action="CreateForum" method="post">
+            <input type="text" name="Theme" placeholder="Тема форума">
+            <select asp-for="CategoryId">
+                <option value="">Выбрать категорию</option>
+                @foreach (var item in Model.Category)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+            <select asp-for="EventId">
+                <option value="">Выбрать событие</option>
+                @foreach (var item in Model.Event)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+            <button class="btn" type="submit">Сохранить</button>
+        </form>
     </div>
-</div>

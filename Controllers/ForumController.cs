@@ -12,6 +12,8 @@ using EventFinder.Models.ForumModels;
 using EventFinder.Models.Repositories;
 using EventFinder.Models.Entity;
 using EventFinder.Extensions;
+using EventFinder.Models.EventModels;
+
 namespace EventFinder.Controllers
 {
     [Authorize()]
@@ -25,25 +27,39 @@ namespace EventFinder.Controllers
 
         protected IRepositoryBase<User> UserRepository{get;set;}
 
+        protected IRepositoryBase<Category> CategoryRepository { get; set; }
+
+        protected IRepositoryBase<Event> EventRepository { get; set; }
+
         public ForumController(IRepositoryBase<Forum> forumRepo,
                                IRepositoryBase<ForumMessage> forumMessageRepo,
-                               IRepositoryBase<User> userRepo)
+                               IRepositoryBase<User> userRepo, 
+                               IRepositoryBase<Category> catRepo,
+                               IRepositoryBase<Event> eventRepo)
         {
             this.ForumRepository = forumRepo;
             this.ForumMessageRepository = forumMessageRepo;
             this.UserRepository = userRepo;
+            this.CategoryRepository = catRepo;
+            this.EventRepository = eventRepo;
         }
 
         public IActionResult Forums()
         {
             var forums = ForumRepository.Query(x=> x.Id != 0).ToList();
+
             return View(forums);
         }
 
         [HttpGet]
         public IActionResult CreateForum()
         {
-            return View();
+            var model = new CreateForum
+            { 
+                Category = CategoryRepository.Query(s => s.Id != 0).ToList(),
+                Event = EventRepository.Query(s => s.Id != 0).ToList()
+            };
+            return View(model);
         }
 
         [HttpPost]
@@ -57,10 +73,12 @@ namespace EventFinder.Controllers
                 ForumRepository.Insert(new Forum() {
                     CreationTime = DateTime.Now,
                     OwnerId = user.Id,
-                    Theme = model.Theme
+                    Theme = model.Theme,
+                    CategoryId = model.CategoryId,
+                    EventId = model.EventId
                 });
             }
-            return Ok();
+            return RedirectToAction("Forums", "Forum"); ;
         }
 
         [HttpGet]

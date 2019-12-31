@@ -3,20 +3,22 @@ using System;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191231170612_fix Event")]
+    partial class fixEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("EventFinder.Models.Entity.Category", b =>
@@ -39,7 +41,7 @@ namespace EventFinder.Migrations
 
             modelBuilder.Entity("EventFinder.Models.Entity.Event", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OwnerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -65,23 +67,28 @@ namespace EventFinder.Migrations
                     b.Property<DateTime?>("EventDateStart")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Leader")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("OwnerId")
+                    b.Property<int>("OwnerId1")
                         .HasColumnType("integer");
 
                     b.Property<string>("Place")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("OwnerId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("OwnerId1");
 
                     b.ToTable("Event");
                 });
@@ -93,14 +100,8 @@ namespace EventFinder.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int?>("EventId")
-                        .HasColumnType("integer");
 
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
@@ -109,10 +110,6 @@ namespace EventFinder.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("EventId");
 
                     b.HasIndex("OwnerId");
 
@@ -219,22 +216,14 @@ namespace EventFinder.Migrations
                         .IsRequired();
 
                     b.HasOne("EventFinder.Models.Entity.User", "Owner")
-                        .WithMany("Events")
-                        .HasForeignKey("OwnerId")
+                        .WithMany()
+                        .HasForeignKey("OwnerId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("EventFinder.Models.Entity.Forum", b =>
                 {
-                    b.HasOne("EventFinder.Models.Entity.Category", "Category")
-                        .WithMany("Forums")
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("EventFinder.Models.Entity.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId");
-
                     b.HasOne("EventFinder.Models.Entity.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using EventFinder.Models.EntitiesAbstraction;
 
 namespace EventFinder.Models.Entity
@@ -7,7 +8,7 @@ namespace EventFinder.Models.Entity
     public class Event : EntityBase
     {
         public virtual User Owner { get; set; }
-
+        [ForeignKey("UserId")]
         public int OwnerId { get; set; }
 
         public string Name { get; set; }
@@ -18,13 +19,13 @@ namespace EventFinder.Models.Entity
 
         public DateTime CreationDate{get;set;}
 
-        public DateTime DeleteDate{get;set;}
+        public DateTime? DeleteDate{get;set;}
 
         public DateTime EventDate{get;set;}
 
-        public DateTime EventDateStart { get; set; }
+        public DateTime? EventDateStart { get; set; }
 
-        public DateTime EventDateEnd { get; set; }
+        public DateTime? EventDateEnd { get; set; }
 
         public string Leader {get;set;}
 

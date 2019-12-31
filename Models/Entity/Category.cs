@@ -10,6 +10,8 @@ namespace EventFinder.Models.Entity
     {
         public string Name { get; set; }
 
-        public List<Event> Events { get; set; }
+        public virtual List<Event> Events { get; set; }
+
+        public virtual List<Forum> Forums { get; set; }
     }
 }

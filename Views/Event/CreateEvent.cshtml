@@ -1,0 +1,22 @@
+﻿@model EventFinder.Models.EventModels.CreateEventModel
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<div>
+    <form asp-controller="Event" asp-action="CreateEvent" method="post">
+        <input type="text" name="Name">
+        <select asp-for="CategoryId">
+            @foreach (var item in Model.Category)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <input type="datetime" name="EventDate">
+        <input type="text" name="Leader">
+        <input type="text" name="Place">
+        <textarea name="Description"></textarea>
+        <button class="btn" type="submit">Сохранить</button>
+    </form>
+</div>
+

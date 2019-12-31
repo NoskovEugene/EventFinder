@@ -26,7 +26,7 @@
             </div>
             <nav class="nav-main">
                 <ul>
-                    <li><a>Мероприятия</a></li>
+                    <li><a asp-controller="Event" asp-action="Events">Мероприятия</a></li>
                     <li><a asp-controller="Forum" asp-action="Forums">Форум</a></li>
                     <li><a>Сотрудничество</a></li>
                     <li><a>О нас</a></li>
@@ -40,7 +40,7 @@
     <nav class="nav-main pop-up">
         <ul class="submenu">
             @Html.Partial("_LoginPartial")
-            <li><a>Мероприятия</a></li>
+            <li><a asp-controller="Event" asp-action="Events">Мероприятия</a></li>
             <li><a asp-controller="Forum" asp-action="Forums">Форум</a></li>
             <li><a>Сотрудничество</a></li>
             <li><a>О нас</a></li>
@@ -51,7 +51,7 @@
     </main>
     <footer>
         <div class="nav-footer">
-            <div><a>Мероприятия</a></div>
+            <div><a asp-controller="Event" asp-action="Events">Мероприятия</a></div>
             <div><a asp-controller="Forum" asp-action="Forums">Форум</a></div>
             <div><a>Сотрудничество</a></div>
             <div><a>О нас</a></div>
