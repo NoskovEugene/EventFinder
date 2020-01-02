@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using EventFinder.Models;
 using EventFinder.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,28 +15,19 @@ namespace EventFinder
     [Route("api/[controller]")]
     public class EventScheduleController : Controller
     {
-        private readonly EventFinderContext _context;
+        private readonly EventFinderContext context;
         public EventScheduleController(EventFinderContext context)
         {
-            _context = context;
-        }
-
-        // GET: api/<controller>
-        [HttpGet]
-        public ActionResult<IEnumerable<Event>> Get()
-        {
-            var category = new Category { Name = "Dances"};
-            _context.Category.Add(category);
-            _context.SaveChanges();
-            var dance = new Event {  };
-            return _context.Event.ToList();
+            this.context = context;
         }
 
         // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public string Get()
         {
-            return "value";
+            
+            string json = JsonConvert.SerializeObject(context.Event.Select(s=> new { id = s.Id, date = $"{ValueChanger.ChangeNum(s.EventDate.Year)}-{ValueChanger.ChangeNum(s.EventDate.Month)}-{ValueChanger.ChangeNum(s.EventDate.Day)}", time = $"{ValueChanger.ChangeNum(s.EventDate.Hour)}:{ValueChanger.ChangeNum(s.EventDate.Minute)}", title = s.Name, description = s.Description, owner = s.Owner.Login, place = s.Place, category = s.Category.Name }));
+            return json;
         }
 
         // POST api/<controller>

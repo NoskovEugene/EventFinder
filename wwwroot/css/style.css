@@ -328,15 +328,16 @@ a.arrow > img {
 
 .calendar-slider {
     display: flex;
-    width: 80%;
-  flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
 }
 
 .base-form {
-    width: 500px;
+    width: 850px;
     min-width: 250px;
-    height: 350px;
+    height: 595px;
     margin: 50px 5px 0px 5px;
     border-radius: 10px;
     background-color: #FFF;
@@ -347,7 +348,7 @@ a.arrow > img {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 15%;
+    height: 10%;
     border-bottom: 1px solid #E7E7E7;
     text-align: center;
     justify-content: center;
@@ -356,35 +357,37 @@ a.arrow > img {
 
 .body-cal {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 85%;
-    
+    height: 90%;
 }
 
 .cal-field, .event-cal {
-    width: 50%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
 }
 
 .cal-field {
-    width: 50%;
+    width: 100%;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #000038;
-    border-radius: 0 0 10px 0;
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid #E7E7E7;
+    align-content: space-around;
+    align-items: center;
 }
 
 .clndr {
-    width: 90%;
-    margin-top: 40px;
+    width: 70%;
 }
 
 .event-cal {
-    border-left: 1px solid #E7E7E7;
-    border-radius: 0 0 0 10px;
+    overflow-y: auto;
 }
 
 .cal-icon {

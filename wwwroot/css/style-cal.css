@@ -22,6 +22,10 @@
    width: 10%;
 }
 
+.clndr tbody td:hover{
+    cursor: pointer;
+}
+
 .cal-field .clndr .clndr-controls .clndr-control-button .clndr-next-button {
   cursor: pointer;
   -webkit-user-select: none;
