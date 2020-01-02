@@ -3,15 +3,17 @@ using System;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200101214919_add table EventUser")]
+    partial class addtableEventUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,9 +66,6 @@ namespace EventFinder.Migrations
 
                     b.Property<DateTime?>("EventDateStart")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("EventLink")
-                        .HasColumnType("text");
 
                     b.Property<string>("Leader")
                         .HasColumnType("text");

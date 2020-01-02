@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using EventFinder.Models.EntitiesAbstraction;
@@ -32,5 +33,9 @@ namespace EventFinder.Models.Entity
         public string Place {get;set;}
 
         public string Description{get;set;}
+
+        public string EventLink { get; set; }
+
+        public virtual IList<EventUser> EventUsers { get; set; }
     }
 }

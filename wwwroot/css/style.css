@@ -5,6 +5,7 @@ span.fa, span.fas, span.fab {
     font-size: 18pt;
     color: black;
     cursor: pointer;
+    font-weight: normal !important;
 }
 
 a {
@@ -39,6 +40,10 @@ body {
     position: relative;
     min-height: 100vh;
     height: 100vh;
+    background-color: #EEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 button {
@@ -63,9 +68,10 @@ button {
 }
 
 .header-top {
-    box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2);
-    height:90px;
+    /*box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2);*/
     
+    background-color: #FFF;
+    font-weight: bold;
 }
 
 main {
@@ -84,7 +90,6 @@ ul {
     justify-content: center;
     margin-top: 50px;
     width: 100%;
-    height: calc(100vh - 358px);
 }
 
 .border-group {
@@ -328,14 +333,14 @@ a.arrow > img {
     justify-content: space-around;
 }
 
-.base-form { 
+.base-form {
     width: 500px;
     min-width: 250px;
-    height: 350px;   
+    height: 350px;
     margin: 50px 5px 0px 5px;
     border-radius: 10px;
-    
-    box-shadow: 0 16px 48px rgba(2,2,2,0.1);
+    background-color: #FFF;
+    /*box-shadow: 0 16px 48px rgba(2,2,2,0.1);*/
 }
 
 .head-cal {
@@ -408,7 +413,7 @@ a.arrow > img {
     height: 150px;
     margin: 10px 5px 10px 5px;
     border-radius: 10px;
-    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);
+    /*box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);*/
     transform: scale(0.98);
 }
 
@@ -451,8 +456,6 @@ a.arrow > img {
 footer {
     width: 100%;
     background-color: #91C8FF;
-    bottom: 0;
-    left: 0;
     color: #B1B0AF;
     height: auto;
     display: flex;

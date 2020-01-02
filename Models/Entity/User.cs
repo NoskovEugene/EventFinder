@@ -21,7 +21,8 @@ namespace EventFinder.Models.Entity
         public string PathToPhoto {get;set;}
         
         public virtual IList<UserRole> UserRoles {get;set;}
-        
-        public virtual List<Event> Events { get; set; }
+
+        public virtual IList<EventUser> EventUsers { get; set; }
+
     }
 }

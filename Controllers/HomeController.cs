@@ -48,7 +48,7 @@ namespace EventFinder.Controllers
                 var role = User.Claims.Where(x=>x.Type == ClaimsIdentity.DefaultRoleClaimType);
                 ViewBag.Role = role;
             }
-            return View();
+            return View(context.Category.ToList());
         }
 
         [Authorize(Roles = "Пользователь")]

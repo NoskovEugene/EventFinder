@@ -19,15 +19,16 @@ namespace EventFinder.Controllers
         protected IRepositoryBase<Category> CategoryRepository { get; set; }
 
         public EventController(IRepositoryBase<Event> eventRepo,
-                               IRepositoryBase<User> userRepo, 
+                               IRepositoryBase<User> userRepo,
                                IRepositoryBase<Category> catRepo)
         {
             this.EventRepository = eventRepo;
-            this.UserRepository = userRepo; 
+            this.UserRepository = userRepo;
             this.CategoryRepository = catRepo;
 
         }
 
+        [Route("Events/")]
         public IActionResult Events()
         {
             var events = EventRepository.Query(s => s.Id != 0).ToList();

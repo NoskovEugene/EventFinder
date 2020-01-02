@@ -5,57 +5,24 @@
 
 
 
-<div class="wrap-forum-forums wrapper">
-    <table class="table-forum">
-        <thead>
-            <tr>
-                <td>
-                    Название
-                </td>
-                <td>
-                    Категория
-                </td>
-                <td>
-                    День события
-                </td>
-                <td>
-                    Место события
-                </td>
-                <td>
-                    Описание
-                </td>
-                <td>
-                    Создатель
-                </td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <div>@Html.DisplayFor(modelItem => item.Name)</div>
-                    </td>
-                    <td>
-                        <div>@Html.DisplayFor(modelItem => item.Category.Name)</div>
-                    </td>
-                    <td>
-                        <div>@Html.DisplayFor(modelItem => item.EventDate)</div>
-                    </td>
-                    <td>
-                        <div>@Html.DisplayFor(modelItem => item.Place)</div>
-                    </td>
-                    <td>
-                        <div>@Html.DisplayFor(modelItem => item.Description)</div>
-                    </td>
-                    <td>
-                        <div>@Html.DisplayFor(modelItem => item.Owner.Login)</div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="wrap-event-events wrapper">
+    <section class="events-list">
+        @foreach (var item in Model)
+        {
+            <div class="event">
+                <div class="event-body">
+                    <p class="event-name">@item.Name</p>
+                    <p class="event-place">@item.Place</p>
+                    <p class="event-date">@item.EventDate</p>
+                </div>
+                <a class="event-view">
+                    <span class="fas fa-search"></span>
+                </a>
+            </div>
+        }
+        <div class="event-create"><span><a asp-controller="Event" asp-action="CreateEvent">Создайте</a> новое событие!</span></div>
+    </section>
 
-    <div><span><a asp-controller="Event" asp-action="CreateEvent">Создайте</a> новое событие!</span></div>
+    
 </div>
 
