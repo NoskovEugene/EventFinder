@@ -388,6 +388,7 @@ a.arrow > img {
 
 .event-cal {
     overflow-y: auto;
+    align-items:center;
 }
 
 .cal-icon {

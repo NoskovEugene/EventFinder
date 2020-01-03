@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventFinder.Extensions;
 using EventFinder.Models;
 using EventFinder.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Newtonsoft.Json;
 namespace EventFinder
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class EventScheduleController : Controller
     {
         private readonly EventFinderContext context;
@@ -30,22 +32,5 @@ namespace EventFinder
             return json;
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

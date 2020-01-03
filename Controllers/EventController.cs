@@ -18,14 +18,16 @@ namespace EventFinder.Controllers
         protected IRepositoryBase<Event> EventRepository { get; set; }
         protected IRepositoryBase<Category> CategoryRepository { get; set; }
 
+        private readonly EventFinderContext context;
         public EventController(IRepositoryBase<Event> eventRepo,
                                IRepositoryBase<User> userRepo,
-                               IRepositoryBase<Category> catRepo)
+                               IRepositoryBase<Category> catRepo,
+                               EventFinderContext context)
         {
             this.EventRepository = eventRepo;
             this.UserRepository = userRepo;
             this.CategoryRepository = catRepo;
-
+            this.context = context;
         }
 
         [Route("Events/")]
@@ -34,6 +36,18 @@ namespace EventFinder.Controllers
             var events = EventRepository.Query(s => s.Id != 0).ToList();
 
             return View(events);
+        }
+
+        [Route("Events/{id}")]
+        public IActionResult EventDetails(int id)
+        {
+            var login = HttpContext.User.Identity.GetLogin();
+            var idUser = context.User.Where(x => x.Login == login).Select(s => s.Id).FirstOrDefault();
+            var ue = context.EventUser.Where(s => s.EventId == id && s.UserId == idUser).FirstOrDefault();
+            var e = EventRepository.Query(s => s.Id == id).FirstOrDefault();
+            var model = new EventDetailsViewModel() { Event = e, EventUser = ue };
+
+            return View(model);
         }
 
         [HttpGet]
@@ -67,5 +81,6 @@ namespace EventFinder.Controllers
             }
             return RedirectToAction("Events", "Event");
         }
+
     }
 }

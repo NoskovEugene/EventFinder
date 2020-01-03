@@ -1,0 +1,68 @@
+﻿@model EventFinder.Models.EventModels.EventDetailsViewModel
+@{
+    ViewData["Title"] = Model.Event.Name;
+}
+
+<div class="wrap-event-events wrapper">
+    <section class="event-details">
+        <h2>@Model.Event.Name</h2>
+        <div class="event-details-body">
+            <div class="event-details-main">
+                <div class="event-details-info">
+                    <p><span><b>Дата: </b></span>@Model.Event.EventDate</p>
+                    <p><span><b>Место: </b></span>@Model.Event.Place</p>
+                    <p><span><b>Категория: </b></span>@Model.Event.Category.Name</p>
+                    <p><span><b>Создатель: </b></span>@Model.Event.Owner.Login</p>
+                </div>
+                <div class="event-details-desc">
+                    <p><span><b>Описание: </b></span>@Model.Event.Description</p>
+                </div>
+                <div class="event-details-chat">
+                    <p><span><b>Беседы: </b></span></p>
+                </div>
+            </div>
+            <div class="event-details-part">
+                <p><span><b>Участники</b></span></p>
+            </div>
+        </div>
+        @if (Model.EventUser == null)
+        {
+            <button class="follow" alt="@Model.Event.Id">Присоединиться</button>
+        }
+        else
+        {
+            <button class="follow unfollow" alt="@Model.Event.Id">Отписаться от события</button>
+        }
+
+    </section>
+</div>
+<script type="text/javascript">
+
+    let button = document.querySelector('button.follow');
+    button.addEventListener('click', followCheck);
+
+    function followCheck() {
+
+        var id = $(this).attr('alt');
+        
+        $.ajax({
+            type: 'GET',
+            url: '/api/FollowEvent/' + id,
+            dataType: 'json',
+            success: function (data) {
+
+                if (data != 0) {
+                    $('.follow').addClass('unfollow');
+                    $('.follow').html('Отписаться от события');
+                }
+                else {
+                    $('.follow').removeClass('unfollow');
+                    $('.follow').html('Присоединиться');
+                }
+
+            }
+        });
+
+    }
+</script>
+

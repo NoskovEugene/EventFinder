@@ -24,6 +24,7 @@ namespace EventFinder.Models
         public DbSet<Role> Role {get;set;}
 
         public DbSet<Event> Event {get;set;}
+        public DbSet<EventUser> EventUser { get; set; }
 
         public DbSet<ForumMessage> ForumMessage {get;set;}
 

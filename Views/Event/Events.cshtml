@@ -15,7 +15,7 @@
                     <p class="event-place">@item.Place</p>
                     <p class="event-date">@item.EventDate</p>
                 </div>
-                <a class="event-view" asp-controller="EventSchedule" asp-action="Get">
+                <a class="event-view" asp-controller="Event" asp-action="EventDetails" asp-route-id = "@item.Id">
                     <span class="fas fa-search"></span>
                 </a>
             </div>

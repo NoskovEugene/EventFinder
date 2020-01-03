@@ -13,25 +13,20 @@ $(document).ready( function() {
 
     // Here's some magic to make sure the dates are happening this month.
 
-    function getEventToday (events) {
-        $(".body-cal div.event-cal").html(function () {
-            let array = events;
-            let html = '';
-            if (array.length == 0) {
-                html = '<div class = "no-events"><p>Нет мероприятий на этот день</p></div>';
-            }
-            else {
-                for (let i = 0; array.length > i; i++) {
-                    let id = array[i].id;
-                    let time = array[i].time;
-                    let title = array[i].title;
-                    html += '<div class = "event-item" asp-route-id = "' + id + '"><span>' + time + '</span><span>' + title + '</span></div>';
-                }
-            }
+    /*burger menu*/
 
-            return html;
-        });
-    }
+    let burgerMenu = document.querySelector('div.burger-menu');
+    let popup = document.querySelector('.pop-up');
+    console.log(popup);
+    console.log(burgerMenu);
+
+    burgerMenu.onclick = function () {
+        popup.classList.toggle('open-menu');
+    };
+
+
+
+    /*calendar*/
 
     let eventArray = $.ajax({
         type: 'GET',
@@ -63,7 +58,7 @@ $(document).ready( function() {
                             let id = array[i].id;
                             let time = array[i].time;
                             let title = array[i].title;
-                            html += (('<div class = "event-item"><span>' + time + '</span><span>' + title + '</span><img src="img/blue-arrow-right.png" asp-route-id = "' + id + '"></div>') +
+                            html += (('<div class = "event-item"><b>' + time + '</b><b>' + title + '</b><a href = "/Events/'+ id +'"><img src="img/blue-arrow-right.png"></a></div>') +
                                 ('<div class = "about-event"><p><b>Category: </b> ' + array[i].category + '</p>' + 
                                 '<p><b>Creator: </b>' + array[i].owner + '</p>' + 
                                 '<p><b>Place: </b> ' + array[i].place + '</p>' + 

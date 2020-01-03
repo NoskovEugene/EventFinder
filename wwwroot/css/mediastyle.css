@@ -38,6 +38,8 @@
     .burger-menu { height: 32px; width: 45px;}
     .header-top-wrapper {height: 80px; justify-content: space-between;}
     .slider .item img, .calendar-slider .base-form:first-child, .slider {height: 250px;}
+    .slider-dots { bottom: 10%;left: 45%;}
+    .slider .prev, .slider .next {top: 40%;}
     table.table-forum { width: 90%; }
     .wrap-forum-forums:last-child div {width: 70%; text-align: center;}
     .wrap-dialog {width:100%; border-left: 0; border-right: 0;}
