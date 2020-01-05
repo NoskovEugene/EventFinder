@@ -109,10 +109,7 @@
     width: 70%;
 }
 
-.event-details .event-details-part {
-    width: 30%;
-    overflow-y: auto;
-}
+
 
 .event-details .event-details-part p {
     text-align: center;
@@ -122,6 +119,17 @@
     background-color: #FFF;
     padding: 20px;
     margin: 0 10px 10px 10px;
+}
+
+.event-details .event-details-part {
+    width: 30%;
+    overflow-y: auto;
+    margin-left: 0;
+    padding: 20px 0 20px 0;
+}
+
+.event-details-chat p, .event-details-desc p, .event-details-info p:first-child, .event-details-info p:last-child, .event-details-part p:first-child {
+    margin: 0;
 }
 
 .event-details > h2 {
@@ -140,3 +148,13 @@
     background-color: #81D9E5;
 }
 
+.event-details div.event-user {
+    
+    padding: 10px 0 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.event-details .event-details-part div.event-user:first-child {
+    border-top: 1px solid #E7E7E7;
+}

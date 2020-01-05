@@ -30,11 +30,14 @@ namespace EventFinder.Models.Entity
 
         public string Leader {get;set;}
 
+        [Required]
         public string Place {get;set;}
 
         public string Description{get;set;}
 
         public string EventLink { get; set; }
+
+        public virtual List<Forum> Forums { get; set; }
 
         public virtual IList<EventUser> EventUsers { get; set; }
     }

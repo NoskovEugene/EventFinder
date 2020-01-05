@@ -9,6 +9,6 @@ namespace EventFinder.Models.EventModels
     public class EventDetailsViewModel
     {
         public Event Event { get; set; }
-        public EventUser EventUser { get; set; }
+        public List<EventUser> EventUser { get; set; }
     }
 }

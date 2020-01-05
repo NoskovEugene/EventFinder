@@ -37,9 +37,9 @@ namespace EventFinder.Controllers
                 new Category { Name = "Свидания" },
                 new Category { Name = "Киберспорт" },
                 new Category { Name = "Путешествия" },
-                new Category { Name = "Митинги" },
                 new Category { Name = "Для людей XX века" },
-                new Category { Name = "Совместные увлечения" }
+                new Category { Name = "Совместные увлечения" },
+                new Category { Name = "Разное" }
                 );
                 context.SaveChanges();
             }

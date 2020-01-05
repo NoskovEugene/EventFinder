@@ -7,23 +7,28 @@ using EventFinder.Models;
 using EventFinder.Models.Entity;
 using EventFinder.Models.EventModels;
 using EventFinder.Models.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EventFinder.Controllers
 {
+    [Authorize()]
     public class EventController : Controller
     {
         protected IRepositoryBase<User> UserRepository { get; set; }
         protected IRepositoryBase<Event> EventRepository { get; set; }
         protected IRepositoryBase<Category> CategoryRepository { get; set; }
+        protected IRepositoryBase<Forum> ForumRepository { get; set; }
 
         private readonly EventFinderContext context;
-        public EventController(IRepositoryBase<Event> eventRepo,
+        public EventController(IRepositoryBase<Forum> forumRepo, 
+                                IRepositoryBase<Event> eventRepo,
                                IRepositoryBase<User> userRepo,
                                IRepositoryBase<Category> catRepo,
                                EventFinderContext context)
         {
+            this.ForumRepository = forumRepo;
             this.EventRepository = eventRepo;
             this.UserRepository = userRepo;
             this.CategoryRepository = catRepo;
@@ -43,7 +48,7 @@ namespace EventFinder.Controllers
         {
             var login = HttpContext.User.Identity.GetLogin();
             var idUser = context.User.Where(x => x.Login == login).Select(s => s.Id).FirstOrDefault();
-            var ue = context.EventUser.Where(s => s.EventId == id && s.UserId == idUser).FirstOrDefault();
+            var ue = context.EventUser.Where(s => s.EventId == id).ToList();
             var e = EventRepository.Query(s => s.Id == id).FirstOrDefault();
             var model = new EventDetailsViewModel() { Event = e, EventUser = ue };
 
@@ -77,6 +82,17 @@ namespace EventFinder.Controllers
                     Leader = model.Leader
 
                 });
+                if (model.CreateChat != null)
+                {
+                    ForumRepository.Insert(new Forum()
+                    {
+                        CreationTime = DateTime.Now,
+                        OwnerId = user.Id,
+                        Theme = model.Name,
+                        CategoryId = model.CategoryId,
+                        EventId = EventRepository.Query(s=>s.Name == model.Name && s.OwnerId==user.Id).Select(s=>s.Id).FirstOrDefault()
+                    });
+                }
                 
             }
             return RedirectToAction("Events", "Event");

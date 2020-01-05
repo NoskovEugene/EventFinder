@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EventFinder.Extensions;
 using EventFinder.Models;
 using EventFinder.Models.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -12,6 +13,7 @@ using Newtonsoft.Json;
 namespace EventFinder.Controllers
 {
     [Route("api/[controller]")]
+    
     [ApiController]
     public class FollowEventController : ControllerBase
     {
@@ -26,7 +28,7 @@ namespace EventFinder.Controllers
         public string Get(int id)
         {
             var login = HttpContext.User.Identity.GetLogin();
-            var idUser = context.User.Where(x => x.Login == login).Select(s => s.Id).First();
+            var idUser = context.User.Where(x => x.Login == login).Select(s => s.Id).FirstOrDefault();
             var eu = new EventUser() { EventId = id, UserId = idUser };
 
             if (context.EventUser.Where(s => s.EventId == id && s.UserId == idUser).Count() == 0)
@@ -39,9 +41,12 @@ namespace EventFinder.Controllers
             }
             context.SaveChanges();
 
-            var eventUsers = JsonConvert.SerializeObject(context.EventUser.Where(s => s.EventId == id && s.UserId == idUser));
+            var user = context.EventUser.Where(s => s.EventId == id && s.UserId == idUser).Select(s => s.User.Login).FirstOrDefault();
+
+            var eventUsers = JsonConvert.SerializeObject(new { id = id.ToString() + idUser.ToString(), user = user });
 
             return eventUsers;
         }
+
     }
 }

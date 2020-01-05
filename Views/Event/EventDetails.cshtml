@@ -20,9 +20,19 @@
                 <div class="event-details-chat">
                     <p><span><b>Беседы: </b></span></p>
                 </div>
+                @if (Model.Event.EventLink != null)
+                { 
+                    <div class="event-details-link">
+                        <p><a href ="@Model.Event.EventLink"><b>Перейти на основной сайт мероприятия</b></a></p>
+                    </div>
+                }
             </div>
             <div class="event-details-part">
                 <p><span><b>Участники</b></span></p>
+                @foreach(var item in Model.EventUser)
+                { 
+                    <div class="event-user" id = "@item.EventId.ToString()@item.UserId.ToString()">@item.User.Login</div>
+                }
             </div>
         </div>
         @if (Model.EventUser == null)
@@ -50,14 +60,16 @@
             url: '/api/FollowEvent/' + id,
             dataType: 'json',
             success: function (data) {
-
-                if (data != 0) {
+                console.log(data);
+                if (data.user != null) {
                     $('.follow').addClass('unfollow');
                     $('.follow').html('Отписаться от события');
+                    $('.event-details .event-details-part').append('<div class="event-user" id = "'+ data.id +'">' + data.user + '</div>');
                 }
                 else {
                     $('.follow').removeClass('unfollow');
                     $('.follow').html('Присоединиться');
+                    $('#'+ data.id).remove();
                 }
 
             }

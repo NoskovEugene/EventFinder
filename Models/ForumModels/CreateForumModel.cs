@@ -13,7 +13,7 @@ namespace EventFinder.Models.ForumModels
         public string Theme {get;set;}
         public List<Category> Category { get; set; }
 
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public List<Event> Event { get; set; }
 
