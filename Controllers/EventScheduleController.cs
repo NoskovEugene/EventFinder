@@ -28,7 +28,7 @@ namespace EventFinder
         public string Get()
         {
             
-            string json = JsonConvert.SerializeObject(context.Event.Select(s=> new { id = s.Id, date = $"{ValueChanger.ChangeNum(s.EventDate.Year)}-{ValueChanger.ChangeNum(s.EventDate.Month)}-{ValueChanger.ChangeNum(s.EventDate.Day)}", time = $"{ValueChanger.ChangeNum(s.EventDate.Hour)}:{ValueChanger.ChangeNum(s.EventDate.Minute)}", title = s.Name, description = s.Description, owner = s.Owner.Login, place = s.Place, category = s.Category.Name }));
+            string json = JsonConvert.SerializeObject(context.Event.Select(s=> new { id = s.Id, date = $"{ValueChanger.ChangeNum(s.EventDate.Year)}-{ValueChanger.ChangeNum(s.EventDate.Month)}-{ValueChanger.ChangeNum(s.EventDate.Day)}", time = $"{ValueChanger.ChangeNum(s.EventDate.Hour)}:{ValueChanger.ChangeNum(s.EventDate.Minute)}", title = s.Name, description = ValueChanger.ChangeString(s.Description), owner = s.Owner.Login, place = s.Place, category = s.Category.Name }));
             return json;
         }
 

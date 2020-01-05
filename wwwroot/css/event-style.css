@@ -1,34 +1,36 @@
-﻿.event-create a {
-    color: #0093FD;
+﻿.view-create a {
+    color: #00CBE7;
+    font-weight: bold;
 }
 
-.event-view span {
+.view-more span {
     color: #FFF;
-    
 }
 
-.events-list {
+.event-item span {
+    color: #00CBE7;
+    margin-left: 10px;
+
 }
 
-.wrap-event-events .event, .event-create {
+.view-page, .view-create {
     background-color: #FFF;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     margin: 10px;
     position: relative;
 }
 
-.wrap-event-events .event-body {
-   
-    padding:20px
+.view-body {
+    padding: 20px
 }
 
-.wrap-event-events .event-body p:not(:first-child) {
+.view-body p:not(:first-child) {
     font-size: 16px;
 }
 
-.wrap-event-events .event-view {
+.view-more {
     width: 75px;
     min-width: 75px;
     height: auto;
@@ -38,12 +40,16 @@
     justify-content: center;
     align-items: center;
 }
-
-.wrap-event-events .event-name {
-    font-weight: bold
+.view-name {
+    font-weight: bold;
+    margin-top: 0;
 }
 
-.event-create {
+.view-body p:last-child {
+    margin-bottom: 0;
+}
+
+.view-create {
     width: calc(100%-20px);
     padding: 10px;
     align-items: center;
@@ -77,11 +83,7 @@
     border-top: 1px solid #E7E7E7;
 }
 
-.event-item img {
-    width: 40px;
-    height: 20px;
-    cursor: pointer;
-}
+
 
 .event-item b:first-child, .event-item img, .about-event  {
     margin-left: 20px;

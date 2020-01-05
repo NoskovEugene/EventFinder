@@ -135,3 +135,12 @@
     margin: 0;
     color: #E7E7E7;
 }
+
+.view-body p:not(:first-child) span {
+    font-weight: bold;
+}
+
+.view-body p:nth-child(2) a span {
+    color: #00CBE7;
+    margin-left: 10px;
+}

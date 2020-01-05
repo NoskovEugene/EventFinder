@@ -6,21 +6,21 @@
 
 
 <div class="wrap-event-events wrapper">
-    <section class="events-list">
+    <section class="view-list">
         @foreach (var item in Model)
         {
-            <div class="event">
-                <div class="event-body">
-                    <p class="event-name">@item.Name</p>
-                    <p class="event-place">@item.Place</p>
-                    <p class="event-date">@item.EventDate</p>
+            <div class="view-page">
+                <div class="view-body">
+                    <p class="view-name">@item.Name</p>
+                    <p class="view-place">@item.Place</p>
+                    <p class="view-date">@item.EventDate</p>
                 </div>
-                <a class="event-view" asp-controller="Event" asp-action="EventDetails" asp-route-id = "@item.Id">
+                <a class="view-more" asp-controller="Event" asp-action="EventDetails" asp-route-id = "@item.Id">
                     <span class="fas fa-search"></span>
                 </a>
             </div>
         }
-        <div class="event-create"><span><a asp-controller="Event" asp-action="CreateEvent">Создайте</a> новое событие!</span></div>
+        <div class="view-create"><span><a asp-controller="Event" asp-action="CreateEvent">Создайте</a> новое событие!</span></div>
     </section>
 
     

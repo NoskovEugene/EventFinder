@@ -5,94 +5,29 @@
     ViewData["Title"] = "Беседы";
 }
 
-<script>
-    function OpenForum(id) {
-        location.href = `/forum/forumview?id=${id}`;
-    }
-</script>
 
-<div class="wrap-forum-forums  wrapper">
-    <table class="table-forum">
-        @if (Model != null && Model.Count != 0)
+
+<div class="wrapper">
+    <section class="view-list">
+        @foreach (var item in Model)
         {
-            <thead>
-                <tr>
-                    <td>
-                        Номер
-                    </td>
-                    <td>
-                        Тема
-                    </td>
-                    <td>
-                        Автор
-                    </td>
-                    <td>
-                        Создана
-                    </td>
-                    <td>
-                        Событие
-                    </td>
-                    <td>
-                        Категория
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr>
-                    <td>
-                        @item.Id
-                    </td>
-                    <td>
-                        @item.Theme
-                    </td>
-                    <td>
-                        @item.Owner.Login
-                    </td>
-                    <td>
-                        @item.CreationTime
-                    </td>
-                    @if (item.EventId == null)
+            <div class="view-page">
+                <div class="view-body">
+                    <p class="view-name">@item.Theme</p>
+                    @if (item.EventId != null)
                     {
-                        <td>
-                            Нет события
-                        </td>
+                        <p><span>Мероприятие:</span><a asp-controller="Event" asp-action="EventDetails" asp-route-id = "@item.Event.Id"><span class="fas fa-search"></span></a></p>
                     }
-                    else
-                    {
-                        <td>
-                            @item.Event.Name
-                        </td>
-                    }
-                    @if (item.CategoryId == null)
-                    {
-                        <td>
-                            Нет Категории
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            @item.Category.Name
-                        </td>
-                    }
-                    <td>
-                        <button class="list-group-item" onclick="OpenForum(@item.Id)">Перейти</button>
-                    </td>
-                </tr>
-
-                }
-            </tbody>
-
+                    <p><span>Категория: </span>@item.Category.Name</p>
+                    <p><span>Автор: </span>@item.Owner.Login</p>
+                </div>
+                <a class="view-more" asp-controller="Forum" asp-action="ForumView" asp-route-id="@item.Id">
+                    <span class="fas fa-search"></span>
+                </a>
+            </div>
         }
-        else
-        {
+        <div class="view-create"><span><a asp-controller="Forum" asp-action="CreateForum">Создайте</a> новую беседу прямо сейчас!</span></div>
+    </section>
 
-        }
-    </table>
 
-    <div><span><a asp-controller="Forum" asp-action="CreateForum">Создайте</a> новую беседу прямо сейчас!</span></div>
 </div>

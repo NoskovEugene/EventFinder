@@ -20,5 +20,19 @@ namespace EventFinder.Models
             }
             return result;
         }
+
+        public static string ChangeString(string value)
+        {
+            string result = null;
+            if (value!=null)
+            {
+                result = value;
+            }
+            else
+            {
+                result = "Нет записи";
+            }
+            return result;
+        }
     }
 }

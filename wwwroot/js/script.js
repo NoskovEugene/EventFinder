@@ -58,7 +58,7 @@ $(document).ready( function() {
                             let id = array[i].id;
                             let time = array[i].time;
                             let title = array[i].title;
-                            html += (('<div class = "event-item"><b>' + time + '</b><b>' + title + '</b><a href = "/Events/'+ id +'"><img src="img/blue-arrow-right.png"></a></div>') +
+                            html += (('<div class = "event-item"><b>' + time + '</b><b>' + title + '</b><a href = "/Events/' + id +'"><span class="fas fa-search"></span></a></div>') +
                                 ('<div class = "about-event"><p><b>Category: </b> ' + array[i].category + '</p>' + 
                                 '<p><b>Creator: </b>' + array[i].owner + '</p>' + 
                                 '<p><b>Place: </b> ' + array[i].place + '</p>' + 

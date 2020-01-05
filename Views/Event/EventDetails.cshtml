@@ -35,7 +35,7 @@
                 }
             </div>
         </div>
-        @if (Model.EventUser == null)
+        @if (Model.EventUser.Where(s=>s.EventId==Model.Event.Id && s.UserId==Model.Event.OwnerId).Count() == 0)
         {
             <button class="follow" alt="@Model.Event.Id">Присоединиться</button>
         }

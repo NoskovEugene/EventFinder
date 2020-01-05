@@ -17,15 +17,15 @@ using EventFinder.Models.EventModels;
 namespace EventFinder.Controllers
 {
     [Authorize()]
-    [Route("forum/[action]")]
+    
     public class ForumController : Controller
     {
-        
-        protected IRepositoryBase<Forum> ForumRepository{get;set;}
 
-        protected IRepositoryBase<ForumMessage> ForumMessageRepository {get;set;}
+        protected IRepositoryBase<Forum> ForumRepository { get; set; }
 
-        protected IRepositoryBase<User> UserRepository{get;set;}
+        protected IRepositoryBase<ForumMessage> ForumMessageRepository { get; set; }
+
+        protected IRepositoryBase<User> UserRepository { get; set; }
 
         protected IRepositoryBase<Category> CategoryRepository { get; set; }
 
@@ -33,7 +33,7 @@ namespace EventFinder.Controllers
 
         public ForumController(IRepositoryBase<Forum> forumRepo,
                                IRepositoryBase<ForumMessage> forumMessageRepo,
-                               IRepositoryBase<User> userRepo, 
+                               IRepositoryBase<User> userRepo,
                                IRepositoryBase<Category> catRepo,
                                IRepositoryBase<Event> eventRepo)
         {
@@ -44,9 +44,10 @@ namespace EventFinder.Controllers
             this.EventRepository = eventRepo;
         }
 
+        [Route("Forums/")]
         public IActionResult Forums()
         {
-            var forums = ForumRepository.Query(x=> x.Id != 0).ToList();
+            var forums = ForumRepository.Query(x => x.Id != 0).ToList();
 
             return View(forums);
         }
@@ -82,6 +83,7 @@ namespace EventFinder.Controllers
         }
 
         [HttpGet]
+        [Route("Forums/{id}")]
         public IActionResult ForumView(int? id)
         {
             var forum = ForumRepository.Query(x=> x.Id == id).FirstOrDefault();
