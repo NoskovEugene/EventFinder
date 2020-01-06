@@ -79,10 +79,10 @@ namespace EventFinder.Controllers
                     EventDate = model.EventDate,
                     Place = model.Place,
                     Description = model.Description,
-                    Leader = model.Leader
+                    EventLink = model.EventLink
 
                 });
-                if (model.CreateChat != null)
+                if (model.CreateChat == true)
                 {
                     ForumRepository.Insert(new Forum()
                     {
@@ -90,12 +90,16 @@ namespace EventFinder.Controllers
                         OwnerId = user.Id,
                         Theme = model.Name,
                         CategoryId = model.CategoryId,
-                        EventId = EventRepository.Query(s=>s.Name == model.Name && s.OwnerId==user.Id).Select(s=>s.Id).FirstOrDefault()
+                        EventId = EventRepository.Query(s => s.Name == model.Name && s.OwnerId == user.Id).Select(s => s.Id).FirstOrDefault()
                     });
                 }
-                
+                return RedirectToAction("Events", "Event");
             }
-            return RedirectToAction("Events", "Event");
+            else
+            {
+                model.Category = CategoryRepository.Query(s => s.Id != 0).ToList();
+                return View(model);
+            }
         }
 
     }

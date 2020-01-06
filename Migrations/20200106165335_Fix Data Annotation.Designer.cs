@@ -3,15 +3,17 @@ using System;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200106165335_Fix Data Annotation")]
+    partial class FixDataAnnotation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,9 +78,6 @@ namespace EventFinder.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Event");
@@ -130,9 +129,6 @@ namespace EventFinder.Migrations
                     b.HasIndex("EventId");
 
                     b.HasIndex("OwnerId");
-
-                    b.HasIndex("Theme")
-                        .IsUnique();
 
                     b.ToTable("Forum");
                 });

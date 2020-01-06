@@ -4,22 +4,21 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="wrap-auth wrapper">
-    <div class="login border-group">
-        <h2><span>Login</span></h2>
-        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-        {
-            <div class="form-group">
-                <label for="Email">Enter the email</label>
-                @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control" })
+<div class="wrapper">
+    <section class="create-form">
+        <h2>Авторизация</h2>
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div class="form-main">
+                <p>
+                    <input type="email" asp-for="Email" placeholder = "Введите Email" required>
+                    <span asp-validation-for="Email" class="error-valid"></span>
+                </p>
+                <p>
+                    <input type="password" asp-for="Password" placeholder = "Введите пароль" required>
+                    <span asp-validation-for="Password" class="error-valid"></span>
+                </p>
             </div>
-            <div class="form-group">
-                <label for="Password">Enter the password</label>
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn">Login</button>
-            </div>
-        }
-    </div>
+            <button type="submit">Войти</button>
+        </form>
+    </section>
 </div>

@@ -11,30 +11,28 @@ namespace EventFinder.Models.Entity
         public virtual User Owner { get; set; }
         [ForeignKey("UserId")]
         public int OwnerId { get; set; }
-
+        [Required]
+        [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
         public virtual Category Category { get; set; }
 
         public int CategoryId { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime CreationDate{get;set;}
 
-        public DateTime? DeleteDate{get;set;}
-
+        [DataType(DataType.Date)]
         public DateTime EventDate{get;set;}
 
-        public DateTime? EventDateStart { get; set; }
-
-        public DateTime? EventDateEnd { get; set; }
-
-        public string Leader {get;set;}
-
         [Required]
+        [StringLength(100, MinimumLength = 3)]
         public string Place {get;set;}
 
+        [DataType(DataType.MultilineText)]
         public string Description{get;set;}
 
+        [RegularExpression(@"/^(https?:\/\/)?([\w\.]+)\.([a-z]{2,6}\.?)(\/[\w\.]*)*\/?$/")]
         public string EventLink { get; set; }
 
         public virtual List<Forum> Forums { get; set; }

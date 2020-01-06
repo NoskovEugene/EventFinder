@@ -1,46 +1,4 @@
 ﻿
-/* forum/forums */
-
-.wrap-forum-forums {
-    margin-top: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: flex-start;
-}
-
-.table-forum {
-    align-items: center;
-    width: 50%;
-    text-align: center;
-    margin: 0 0 50px 0;
-    font-size: 12px;
-    /*border: solid 1px black;*/
-    border: 0 inherit;
-    border-collapse: collapse;
-}
-
-.table-forum tbody td{
-    border-top: solid 1px #E7E7E7;
-    padding: 10px 0 10px 0;
-    margin:0;
-}
-
-.wrap-forum-forums:last-child a {
-    color: #0093FD;
-}
-
-.list-group-item {
-    color: #0093FD;
-    cursor: pointer;
-}
-
-/* forum/CreateForum */
-.createforum {
-    height: 300px;
-}
-
 /* forum/ForumView */
 
 .wrapper.forum-view {
@@ -49,15 +7,22 @@
 }
 
 .wrap-dialog {
-    width: 425px;
+    width: 500px;
     height: 100%;
     border: solid 1px #E7E7E7;
     font-size: 12pt;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card {
     width: 100%;
     margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 
@@ -68,7 +33,7 @@
     width: 90%;
     height: 73%;
     padding: 5%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .message-box {
@@ -87,7 +52,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-self: flex-end;
 }
 
 .send-panel .btn {
@@ -105,11 +70,18 @@
     resize: none;
 }
 
+.input-area::placeholder {
+    font-family: 'Rubik', sans-serif;
+    color: #BBBBBB;
+}
+
 .card-body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width:90%;
+    justify-content: flex-end;
+    max-width: 90%;
+    margin: 0;
 }
 
 .card-text {
@@ -119,12 +91,12 @@
     border-radius: 25px;
     background-color: #0093FD;
     color: white;
-    text-align:start;
+    text-align: end;
 }
 
 .card-title {
-    margin-left: 5px;
-    color: #E7E7E7;
+    margin-right: 5px;
+    color: #BBBBBB;
 }
 
 .wrap-dialog h3 {
@@ -133,7 +105,8 @@
     height: 3.5%;
     text-align: center;
     margin: 0;
-    color: #E7E7E7;
+    color: #BBBBBB;
+    font-weight: normal;
 }
 
 .view-body p:not(:first-child) span {

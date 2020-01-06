@@ -16,9 +16,10 @@ namespace EventFinder.Models
             builder.Entity<User>().HasIndex(u=> new { u.Login}).IsUnique(true);
             builder.Entity<UserRole>().HasKey(table=> new { table.UserId, table.RoleId} );
             builder.Entity<Category>().HasIndex(c => new { c.Name }).IsUnique(true);
+            builder.Entity<Event>().HasIndex(c => new { c.Name }).IsUnique(true);
+            builder.Entity<Forum>().HasIndex(c => new { c.Theme }).IsUnique(true);
             builder.Entity<EventUser>().HasKey(table => new { table.EventId, table.UserId });
         }
-
         public DbSet<User> User {get;set;}
 
         public DbSet<Role> Role {get;set;}

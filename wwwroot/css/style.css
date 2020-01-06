@@ -14,21 +14,14 @@ a {
     font-size: 20px;
 }
 
-input[type="text"], input[type="password"] {
-    font-size: 12pt;
-    text-align: center;
-    vertical-align: middle;
-}
 
-input[placeholder] {
-    text-align: start;
-    vertical-align: middle;
-}
+
+
 
 /*-----------------------------------------------------BASE---------------------------------------------------------*/
 html {
     scroll-behavior: smooth;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 html, body {
@@ -50,6 +43,8 @@ button {
     padding: 0;
     border: none;
     font: inherit;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
 }
 
 .btn {
@@ -162,6 +157,10 @@ ul {
 
 .header-top a {
     color: black;
+}
+
+.header-top a:hover {
+    color: #00CBE7;
 }
 
 .header-top li{
@@ -465,7 +464,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
 }
 
 .nav-footer, footer .logo-media {

@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using System;
 using EventFinder.Models.EntitiesAbstraction;
+using System.ComponentModel.DataAnnotations;
 
 namespace EventFinder.Models.Entity
 {
@@ -12,11 +13,13 @@ namespace EventFinder.Models.Entity
 
         public int OwnerId{get;set;}
 
+        [Required]
+        [StringLength(50, MinimumLength = 3)]
         public string Theme{get;set;}
 
         public virtual Category Category { get; set; }
 
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public virtual Event Event { get; set; }
 

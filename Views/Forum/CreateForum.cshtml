@@ -2,26 +2,41 @@
 @model CreateForum
 
 @{
-    ViewData["Title"] = "Создать беседу";
+    ViewData["Title"] = "Создать обсуждение";
 }
 
-    <div class="wrapper">
+<div class="wrapper">
+    <section class="create-form">
+        <h2>Создать новое обсуждение</h2>
         <form asp-controller="Forum" asp-action="CreateForum" method="post">
-            <input type="text" name="Theme" placeholder="Тема форума">
-            <select asp-for="CategoryId">
-                <option value="">Выбрать категорию</option>
-                @foreach (var item in Model.Category)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-            <select asp-for="EventId">
-                <option value="">Выбрать событие</option>
-                @foreach (var item in Model.Event)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-            <button class="btn" type="submit">Сохранить</button>
+            <div class="form-main">
+                <p>
+                    <input type="text" asp-for="Theme" placeholder="Тема обсуждения" required>
+                    <span asp-validation-for="Theme" class="error-valid"></span>
+                </p>
+                <p>
+                    <select asp-for="CategoryId" required>
+                        <option class ="placeholder" value="" hidden>Выбрать категорию</option>
+                        @foreach (var item in Model.Category)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CategoryId" class="error-valid"></span>
+                </p>
+                <p>
+                    <select asp-for="EventId" required>
+                        <option class ="placeholder" value="" hidden>Выбрать мероприятие</option>
+                        <option value="">Без мероприятия</option>
+                        @foreach (var item in Model.Event)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="EventId" class="error-valid"></span>
+                </p>
+            </div>
+            <button type="submit">Сохранить</button>
         </form>
-    </div>
+    </section>
+</div>

@@ -140,10 +140,13 @@
     color: white;
 }
 
+.event-details button{
+    color: white;
+    width: calc(100% - 20px);
+}
+
 .event-details button.follow {
     background-color: #00CBE7;
-    color: white;
-    width:calc(100% - 20px);
 }
 
 .event-details button.unfollow {

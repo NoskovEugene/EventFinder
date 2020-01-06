@@ -1,0 +1,104 @@
+﻿.create-form p, .create-form .form-main, .create-form button, .create-form h2 {
+    text-align: center;
+    margin: 0 10px 10px 10px;
+    background-color: #FFF;
+    padding: 10px 10px 10px 10px;
+}
+
+.create-form .form-main, .create-form select {
+    font-size: 16px;
+}
+
+.create-form h2 {
+    background-color: #00E9D9;
+    color: #FFF;
+    padding: 20px;
+}
+
+
+
+.create-form input, .create-form select, .create-form textarea {
+    width: 80%;
+    height: 31px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.reg-wrapper input {
+    width: 90%;
+}
+
+.error-valid {
+    display: block;
+    color: red;
+    width: 80%;
+    text-align: left;
+    margin:5px 0 0 0;
+}
+
+.form-main > p {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    
+}
+
+.create-form ::placeholder {
+    padding: 5px 5px 0 5px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.create-form textarea {
+    height: 50px;
+    resize: none;
+    padding:0;
+}
+
+.create-form select {
+    background: transparent;
+    width: 81%;
+    height: 37px;
+    line-height: 1;
+    /*-webkit-appearance: none;*/
+    padding: 0 5px 0 5px;
+}
+
+.create-form .form-main .create-chat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 20px 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+.create-form .form-main p:first-child {
+    padding-top: 20px; 
+    
+}
+
+.create-form .form-main .create-chat input {
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+}
+
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-form button {
+    background-color: #00CBE7;
+    color: #FFF;
+    width: calc(100% - 20px);
+    padding: 20px;
+}
+
+.create-form p:first-child {
+    text-align: center;
+}

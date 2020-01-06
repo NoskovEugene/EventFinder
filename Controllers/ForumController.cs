@@ -78,8 +78,16 @@ namespace EventFinder.Controllers
                     CategoryId = model.CategoryId,
                     EventId = model.EventId
                 });
+                return RedirectToAction("Forums", "Forum");
             }
-            return RedirectToAction("Forums", "Forum"); ;
+            else
+            {
+                model.Category = CategoryRepository.Query(s => s.Id != 0).ToList();
+                model.Event = EventRepository.Query(s => s.Id != 0).ToList();
+
+                return View(model);
+            }
+            
         }
 
         [HttpGet]
