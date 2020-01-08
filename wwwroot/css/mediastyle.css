@@ -1,6 +1,7 @@
 @media (max-width: 1360px){
     
     .calendar-slider, .event-category {width: 95%;}
+    section.profile {width: 65%;}
     
 }
 
@@ -9,7 +10,7 @@
     .burger-menu { display: block; height: 36px;}
     .header-top-wrapper {height: 90px;}
     .header-top .nav-main, .header-top .auth { display: none; }
-    
+    section.profile {width: 70%;}
 }
 
 @media (max-width: 700px){
@@ -19,6 +20,7 @@
     footer .logo-media {flex-direction: column; align-items: center;}
     footer img { margin-bottom: 30px}
     table.table-forum { width: 80%; }
+    section.profile {width: 80%;}
     
 }
 
@@ -28,6 +30,7 @@
     .close {width: 0;transition: 0.5s}
     .nav-footer { flex-direction: column; align-items: center; }
     .nav-footer div{ margin-bottom: 10px;}
+    .wrap-profile { top: -250px; }
 
 }
 
@@ -43,6 +46,7 @@
     table.table-forum { width: 90%; }
     .wrap-forum-forums:last-child div {width: 70%; text-align: center;}
     .wrap-dialog {width:100%; border-left: 0; border-right: 0;}
+    section.profile {width: 90%;}
 }
 
 
@@ -52,5 +56,6 @@
     .header-top { box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2) }
     .calendar-slider { margin: 0 2.5% 0 2.5%; }
     .slider .item img,.calendar-slider .base-form:first-child, .slider  {height: 225px;}
+    section.profile {width: 95%;}
     
 }

@@ -3,7 +3,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <li class="auth-item"><span class="fas fa-user"></span><a>@User.Identity.Name</a>|<a href="/Account/Logout">Выход</a></li>
+    <li class="auth-item"><span class="fas fa-user"></span><a asp-controller="Profile" asp-action="Profile">@User.Identity.Name</a>|<a href="/Account/Logout">Выход</a></li>
 }
 else
 {

@@ -21,7 +21,7 @@
                     <p><span>Категория: </span>@item.Category.Name</p>
                     <p><span>Автор: </span>@item.Owner.Login</p>
                 </div>
-                <a class="view-more" asp-controller="Forum" asp-action="ForumView" asp-route-id="@item.Id">
+                <a class="view-btn view-more" asp-controller="Forum" asp-action="ForumView" asp-route-id="@item.Id">
                     <span class="fas fa-search"></span>
                 </a>
             </div>

@@ -18,7 +18,7 @@ namespace EventFinder.Extensions
         {
             string result = null;
 
-            return value != null ? result = value : result = "Нет записи";
+            return value != null ? result = value : result = "Не найдено";
         }
     }
 }

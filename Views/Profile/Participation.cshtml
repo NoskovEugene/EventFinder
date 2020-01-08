@@ -1,0 +1,27 @@
+﻿@model List<EventFinder.Models.Entity.Event>
+
+<div class="partial-profile">
+    <h3>Мероприятия</h3>
+    <section class="view-list">
+        @if (Model.Count() != 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="view-page">
+                    <div class="view-body">
+                        <p class="view-name">@item.Name</p>
+                        <p class="view-place">@item.Place</p>
+                        <p class="view-date">@item.EventDate</p>
+                    </div>
+                    <a class="view-btn view-more" asp-controller="Event" asp-action="EventDetails" asp-route-id="@item.Id">
+                        <span class="fas fa-search"></span>
+                    </a>
+                </div>
+            }
+        }
+        else 
+        {
+            <div class="no-exits-items"><p>Нет мероприятий</p></div>
+        }
+    </section>
+</div>

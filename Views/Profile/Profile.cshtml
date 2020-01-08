@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Профиль";
+}
+
+<div class="wrap-profile">
+    <section class="profile">
+        <h2><span>Профиль</span><a><span class="fa fa-cog"></span></a></h2>
+        <div class="profile-body">
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a class="share-page" id="info"><span class="fa fa-info"></span>Общая информация</a></li>
+                        <li><a class="share-page" id="participation"><span class="fa fa-check-square-o"></span>Где я участвую?</a></li>
+                        <li><a class="share-page" id="myevent"><span class="fa fa-calendar-o"></span>Мои мероприятия</a></li>
+                        <li><a class="share-page" id="mydiscussion"><span class="fa fa-comment-o"></span>Мои беседы</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="profile-container">
+                    
+            </div>
+        </div>
+    </section>
+</div>
+    <script type="text/javascript">
+
+        let share = document.querySelectorAll('.share-page');
+        console.log(share);
+        for (let i = 0; i < share.length; i++)
+        {
+            share[i].addEventListener('click', getPage);
+        }
+
+        function getPage() {
+
+            let action = '';
+
+            let page = $(this).attr('id');
+
+            let obj = $(this).attr('class');
+
+            if (obj == "view-btn view-more my-event" || obj == "view-btn delete-item my-event delete-event") {
+                if (page == "info" || page == "participation" || page == "mydiscussion" || page == "myevent") {
+                    action = '';
+                }
+                else {
+                    action = 'myeventdelete/';
+                }
+            }
+            if (obj == "view-btn view-more my-forum" || obj == "view-btn delete-item my-forum delete-forum") {
+                action = 'mydiscussiondelete/';
+            }    
+
+            console.log(page);
+            $.ajax({
+                type: 'GET',
+                url: 'profile/' + action + page,
+                success: function (data) {
+                    $('.profile .profile-container').html(data);
+                }
+            });
+        }
+
+    </script>

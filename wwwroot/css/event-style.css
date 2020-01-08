@@ -3,7 +3,7 @@
     font-weight: bold;
 }
 
-.view-more span {
+.view-btn span {
     color: #FFF;
 }
 
@@ -30,16 +30,20 @@
     font-size: 16px;
 }
 
-.view-more {
+.view-btn {
     width: 75px;
     min-width: 75px;
     height: auto;
-    background-color: #00CBE7;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.view-more {
+    background-color: #00CBE7;
+}
+
 .view-name {
     font-weight: bold;
     margin-top: 0;
@@ -162,4 +166,9 @@
 
 .event-details .event-details-part div.event-user:first-child {
     border-top: 1px solid #E7E7E7;
+}
+
+.event-details-chat a {
+    color: #00CBE7;
+    font-size: 16px;
 }

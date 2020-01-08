@@ -20,7 +20,7 @@ namespace EventFinder.Models.Entity
 
         public virtual Image Image {get;set;}
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         public virtual IList<UserRole> UserRoles {get;set;}
 

@@ -1,0 +1,47 @@
+﻿@model List<EventFinder.Models.Entity.Forum>
+
+
+<div class="partial-profile">
+    <h3>Мои беседы</h3>
+    <section class="view-list">
+        @if (Model.Count() != 0)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="view-page">
+                    <div class="view-body">
+                        <p class="view-name">@item.Theme</p>
+                        @if (item.EventId != null)
+                        {
+                            <p><span>Мероприятие:</span><a asp-controller="Event" asp-action="EventDetails" asp-route-id="@item.Event.Id"><span class="fas fa-search"></span></a></p>
+                        }
+                        <p><span>Категория: </span>@item.Category.Name</p>
+                        <p><span>Автор: </span>@item.Owner.Login</p>
+                    </div>
+                    <div class="buttons-myevent">
+                        <a class="view-btn view-more my-forum" asp-controller="Event" asp-action="EventDetails" asp-route-id="@item.Id">
+                            <span class="fas fa-search"></span>
+                        </a>
+                        <a class="view-btn delete-item my-forum delete-forum" id="@item.Id">
+                            <span class="fa fa-trash-o"></span>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="no-exits-items"><p>Нет бесед</p></div>
+        }
+    </section>
+</div>
+<script type="text/javascript">
+
+        let forum = document.querySelectorAll('.delete-forum');
+        console.log(forum);
+        for (let i = 0; i < forum.length; i++)
+        {
+            forum[i].addEventListener('click', getPage);
+        }
+
+</script>
