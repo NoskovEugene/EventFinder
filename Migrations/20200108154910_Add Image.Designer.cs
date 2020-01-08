@@ -3,15 +3,17 @@ using System;
 using EventFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EventFinder.Migrations
 {
     [DbContext(typeof(EventFinderContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200108154910_Add Image")]
+    partial class AddImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,9 +210,6 @@ namespace EventFinder.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Login")
                         .HasColumnType("text");
 
@@ -220,13 +219,13 @@ namespace EventFinder.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
+                    b.Property<string>("PathToPhoto")
+                        .HasColumnType("text");
+
                     b.Property<string>("SurName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ImageId")
-                        .IsUnique();
 
                     b.HasIndex("Login")
                         .IsUnique();
@@ -309,15 +308,6 @@ namespace EventFinder.Migrations
                     b.HasOne("EventFinder.Models.Entity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EventFinder.Models.Entity.User", b =>
-                {
-                    b.HasOne("EventFinder.Models.Entity.Image", "Image")
-                        .WithOne("User")
-                        .HasForeignKey("EventFinder.Models.Entity.User", "ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

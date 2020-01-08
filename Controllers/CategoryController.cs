@@ -26,7 +26,7 @@ namespace EventFinder.Controllers
 
         }
 
-        [Route("Category/{id}")]
+        [Route("category/{id}")]
         public IActionResult Category(int id)
         {
             var model = new CategoryViewModel 

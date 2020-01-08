@@ -44,7 +44,7 @@ namespace EventFinder.Controllers
             this.EventRepository = eventRepo;
         }
 
-        [Route("Forums/")]
+        [Route("forums/")]
         public IActionResult Forums()
         {
             var forums = ForumRepository.Query(x => x.Id != 0).ToList();
@@ -53,6 +53,7 @@ namespace EventFinder.Controllers
         }
 
         [HttpGet]
+        [Route("forums/createforum")]
         public IActionResult CreateForum()
         {
             var model = new CreateForum
@@ -64,7 +65,7 @@ namespace EventFinder.Controllers
         }
 
         [HttpPost]
-        [ActionName("createforum")]
+        [Route("forums/createforum")]
         public IActionResult CreateForum(CreateForum model)
         {
             if(ModelState.IsValid)
@@ -91,7 +92,7 @@ namespace EventFinder.Controllers
         }
 
         [HttpGet]
-        [Route("Forums/{id}")]
+        [Route("forums/{id}")]
         public IActionResult ForumView(int? id)
         {
             var forum = ForumRepository.Query(x=> x.Id == id).FirstOrDefault();

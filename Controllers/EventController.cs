@@ -35,7 +35,7 @@ namespace EventFinder.Controllers
             this.context = context;
         }
 
-        [Route("Events/")]
+        [Route("events")]
         public IActionResult Events()
         {
             var events = EventRepository.Query(s => s.Id != 0).ToList();
@@ -43,7 +43,7 @@ namespace EventFinder.Controllers
             return View(events);
         }
 
-        [Route("Events/{id}")]
+        [Route("events/{id}")]
         public IActionResult EventDetails(int id)
         {
             var login = HttpContext.User.Identity.GetLogin();
@@ -56,6 +56,7 @@ namespace EventFinder.Controllers
         }
 
         [HttpGet]
+        [Route("events/createevent")]
         public IActionResult CreateEvent()
         {
             var model = new CreateEventModel { Category = CategoryRepository.Query(s => s.Id != 0).ToList() };
@@ -63,7 +64,7 @@ namespace EventFinder.Controllers
         }
 
         [HttpPost]
-        [ActionName("createevent")]
+        [Route("events/createevent")]
         public IActionResult CreateEvent(CreateEventModel model)
         {
             if (ModelState.IsValid)
