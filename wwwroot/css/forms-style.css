@@ -15,12 +15,11 @@
     padding: 20px;
 }
 
-
-
 .create-form input, .create-form select, .create-form textarea {
     width: 80%;
     height: 31px;
     font-family: 'Rubik', sans-serif;
+    font-size: 16px !important;
 }
 
 .reg-wrapper input {
@@ -45,24 +44,26 @@
 }
 
 .create-form ::placeholder {
-    padding: 5px 5px 0 5px;
     font-size: 16px;
     font-family: 'Rubik', sans-serif;
+}
+
+.create-form textarea ::placeholder {
+    padding: 5px 5px 0 5px;
 }
 
 .create-form textarea {
     height: 50px;
     resize: none;
-    padding:0;
 }
 
 .create-form select {
     background: transparent;
-    width: 81%;
+    width: 83%;
     height: 37px;
-    line-height: 1;
+    line-height: 2;
     /*-webkit-appearance: none;*/
-    padding: 0 5px 0 5px;
+    padding:5px;
 }
 
 .create-form .form-main .create-chat {
@@ -101,4 +102,37 @@
 
 .create-form p:first-child {
     text-align: center;
+}
+
+/*Редактирование профиля*/
+.partial-profile .form-main {
+    margin: 0 0 10px 0;
+}
+.partial-profile button {
+    margin: 0;
+    width: 100%;
+}
+
+.partial-profile .create-form input, .partial-profile .create-form textarea {
+    width: 50%;
+}
+
+.partial-profile input[type="email"] {    
+    margin-top: 10px;
+}
+
+/*Настрока полей*/
+input, textarea {
+    border: none;
+    border: 1px solid #A9A9A9;
+    background-color: #FFFAFA;
+    padding: 0 5px 0 5px;
+}
+
+select {
+    background-color: #FFFAFA;
+}
+
+textarea{
+    padding: 5px;
 }

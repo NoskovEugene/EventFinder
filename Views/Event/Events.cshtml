@@ -7,6 +7,19 @@
 
 <div class="wrap-event-events wrapper">
     <section class="view-list">
+
+        <div class="wrap-item-null">
+            <div class="item-null">
+
+            </div>
+            <div class="filter-item-null">
+
+            </div>
+            <div class="txt-item-null">
+                <p>Начинать всегда стоит с того, что сеет сомнения...</p>
+                <p><a asp-controller="Event" asp-action="CreateEvent"><b>Создайте</b></a> новое событие!</p>
+            </div>
+        </div>
         @foreach (var item in Model)
         {
             <div class="view-page">
@@ -15,12 +28,12 @@
                     <p class="view-place">@item.Place</p>
                     <p class="view-date">@item.EventDate</p>
                 </div>
-                <a class="view-btn view-more" asp-controller="Event" asp-action="EventDetails" asp-route-id = "@item.Id">
+                <a class="view-btn view-more" asp-controller="Event" asp-action="EventDetails" asp-route-id="@item.Id">
                     <span class="fas fa-search"></span>
                 </a>
             </div>
         }
-        <div class="view-create"><span><a asp-controller="Event" asp-action="CreateEvent">Создайте</a> новое событие!</span></div>
+
     </section>
 
     

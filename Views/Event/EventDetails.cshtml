@@ -40,7 +40,7 @@
                 <p><span><b>Участники</b></span></p>
                 @foreach (var item in Model.EventUser)
                 {
-                    <div class="event-user" id="@item.EventId.ToString()@item.UserId.ToString()">@item.User.Login</div>
+                    <div class="event-user" id="@item.EventId.ToString()@item.UserId.ToString()"><span class="fas fa-user"></span>@item.User.Login</div>
                 }
             </div>
         </div>

@@ -54,10 +54,11 @@
     <div class="event-category">
         @foreach (var item in Model)
         {
-            <a class="event-block" asp-controller="Category" asp-action="Category" asp-route-id="@(item.Id)" >
-                <img src="~/img/@(item.Name).jpg" alt="@(item.Name)" > 
+            <a class="event-block" asp-controller="Category" asp-action="Category" asp-route-id="@(item.Id)">
+                <img src="~/img/@(item.Name).jpg" alt="@(item.Name)">
                 <div class="desc-event"><span>@item.Name</span></div>
             </a>
         }
     </div>
 </div>
+

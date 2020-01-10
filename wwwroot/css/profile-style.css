@@ -1,20 +1,22 @@
-﻿main {
-    position: relative;
-}
+﻿
 
 .wrap-profile {
-    display:flex;
+    top: 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     width: 100%;
-    justify-content: center;
-    position: absolute;
-    top: -350px;
+    min-height: 620px;
+    height: auto;
 }
+
 
 section.profile {
     width: 55%;
     display: flex;
     flex-direction: column;
-    
 }
 
 section.profile .profile-body {
@@ -79,10 +81,10 @@ section.profile aside li span{
     
 }
 
-    section.profile aside li:first-child span {
-        margin-left: 5px;
-        margin-right: 18px;
-    }
+section.profile aside li:first-child span {
+    margin-left: 5px;
+    margin-right: 18px;
+}
 
 /*Контейнер*/
 
@@ -108,7 +110,7 @@ section.profile aside li span{
 }
 
 .buttons-myevent .delete-item {
-    background-color: red;
+    background-color: #FC3131;
     height: 50%;
 }
 
@@ -124,4 +126,16 @@ section.profile aside li span{
     height: 100%;
     width: 100%;
     align-items: center;
+}
+
+.wrap-profile h2 a span {
+    transform: scale(.9);
+}
+
+.wrap-profile h2 a span:hover {
+    transform: scale(1);
+}
+
+.profile-container:not(h3), .profile-container:not(button) {
+    font-size: 16px;
 }

@@ -29,14 +29,25 @@ namespace EventFinder.Controllers
         [Route("category/{id}")]
         public IActionResult Category(int id)
         {
-            var model = new CategoryViewModel 
-            {
-                Name = CategoryRepository.Query(s => s.Id == id).Select(s=>s.Name).First(),
-                Events = EventRepository.Query(s => s.Id == id).ToList(),
-                Forums = ForumRepository.Query(s => s.Id == id).ToList()
-            };
+            var model = CategoryRepository.Query(s => s.Id == id).First();
 
             return View(model);
+        }
+
+        [Route("category/{id}/events")]
+        public IActionResult EventsByCategory (int id)
+        {
+            var events = EventRepository.Query(s => s.CategoryId == id).ToList();
+
+            return PartialView("Events", events);
+        }
+
+        [Route("category/{id}/forums")]
+        public IActionResult ForumsByCategory(int id)
+        {
+            var forums = ForumRepository.Query(s => s.CategoryId == id).ToList();
+
+            return PartialView("Forums", forums);
         }
     }
 }

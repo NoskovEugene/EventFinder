@@ -1,4 +1,4 @@
-@model EventFinder.Models.AccountModels.LoginModel
+п»ї@model EventFinder.Models.AccountModels.LoginModel
 
 @{
     ViewData["Title"] = "Login";
@@ -6,19 +6,20 @@
 
 <div class="wrapper">
     <section class="create-form">
-        <h2>Авторизация</h2>
+        <h2>РђРІС‚РѕСЂРёР·Р°С†РёСЏ</h2>
         <form asp-controller="Account" asp-action="Login" method="post">
             <div class="form-main">
                 <p>
-                    <input type="email" asp-for="Email" placeholder = "Введите Email" required>
+                    <input type="email" asp-for="Email" placeholder="Р’РІРµРґРёС‚Рµ Email" required>
                     <span asp-validation-for="Email" class="error-valid"></span>
                 </p>
                 <p>
-                    <input type="password" asp-for="Password" placeholder = "Введите пароль" required>
+                    <input type="password" asp-for="Password" placeholder="Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ" required>
                     <span asp-validation-for="Password" class="error-valid"></span>
                 </p>
             </div>
-            <button type="submit">Войти</button>
+            <button type="submit">Р’РѕР№С‚Рё</button>
         </form>
     </section>
 </div>
+

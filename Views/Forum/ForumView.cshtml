@@ -1,4 +1,4 @@
-@using EventFinder.Models.Entity;
+п»ї@using EventFinder.Models.Entity;
 @model Tuple<Forum, List<ForumMessage>>;
 
 @{
@@ -36,8 +36,8 @@
                 </div>
             </div>
             <div class="send-panel">
-                <textarea id="newMessage" class="input-area" placeholder="Написать сообщение..."></textarea>
-                <button class="btn" onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);">Send</button>
+                <textarea id="newMessage" class="input-area" placeholder="РќР°РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ..."></textarea>
+                <button onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);"><span class="fa fa-paper-plane"></span></button>
             </div>
         </div>
     }
@@ -49,3 +49,4 @@
     }
 
 </div>
+

@@ -7,8 +7,22 @@
 
 
 
-<div class="wrapper">
+<div class="wrapper wrap-forum">
     <section class="view-list">
+        <div class="wrap-item-null">
+            <div class="item-null">
+
+            </div>
+            <div class="filter-item-null">
+
+            </div>
+            <div class="txt-item-null">
+                <p>
+                    Без многого может обходиться человек,<br> но только не без человека...
+                </p>
+                <p>Не стесняйся - <br><a asp-controller="Forum" asp-action="CreateForum"><b>начни беседу первым!</b></a></p>
+            </div>
+        </div>
         @foreach (var item in Model)
         {
             <div class="view-page">
@@ -16,7 +30,7 @@
                     <p class="view-name">@item.Theme</p>
                     @if (item.EventId != null)
                     {
-                        <p><span>Мероприятие:</span><a asp-controller="Event" asp-action="EventDetails" asp-route-id = "@item.Event.Id"><span class="fas fa-search"></span></a></p>
+                        <p><span>Мероприятие:</span><a asp-controller="Event" asp-action="EventDetails" asp-route-id="@item.Event.Id"><span class="fas fa-search"></span></a></p>
                     }
                     <p><span>Категория: </span>@item.Category.Name</p>
                     <p><span>Автор: </span>@item.Owner.Login</p>
@@ -26,7 +40,6 @@
                 </a>
             </div>
         }
-        <div class="view-create"><span><a asp-controller="Forum" asp-action="CreateForum">Создайте</a> новую беседу прямо сейчас!</span></div>
     </section>
 
 

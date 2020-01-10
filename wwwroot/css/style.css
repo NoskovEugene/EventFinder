@@ -14,7 +14,9 @@ a {
     font-size: 20px;
 }
 
-
+header, footer, .hello, h2, h3, .view-name {
+    font-family: 'Montserrat', sans-serif;
+}
 
 
 
@@ -45,17 +47,7 @@ button {
     font: inherit;
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
-}
-
-.btn {
-    color: white;
-    cursor: pointer;
-    border-radius: 50px;
-    width: 150px;
-    height: 40px;
-    background-color: #0093FD;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    font-size: 20px !important;
 }
 
 .logo-header, .logo, .burger-menu {
@@ -193,6 +185,7 @@ ul {
     visibility: hidden;
     opacity: 0;
     transition: .3s;
+    margin-top: 0px;
 }
 
 .nav-main.pop-up li{

@@ -5,7 +5,7 @@
 
 <div class="wrap-profile">
     <section class="profile">
-        <h2><span>Профиль</span><a><span class="fa fa-cog"></span></a></h2>
+        <h2><span>Профиль</span><a class="share-page" id="editprofile"><span class="fa fa-cog"></span></a></h2>
         <div class="profile-body">
             <aside>
                 <nav>
@@ -23,43 +23,50 @@
         </div>
     </section>
 </div>
-    <script type="text/javascript">
+<script type="text/javascript">
 
-        let share = document.querySelectorAll('.share-page');
-        console.log(share);
-        for (let i = 0; i < share.length; i++)
-        {
-            share[i].addEventListener('click', getPage);
-        }
+    let share = document.querySelectorAll('.share-page');
+    console.log(share);
+    for (let i = 0; i < share.length; i++)
+    {
+        share[i].addEventListener('click', getPage);
+    }
 
-        function getPage() {
+    window.addEventListener('load', getPage);
 
-            let action = '';
+    function getPage() {
 
-            let page = $(this).attr('id');
+        let action = '';
 
-            let obj = $(this).attr('class');
+        let page = null;
 
-            if (obj == "view-btn view-more my-event" || obj == "view-btn delete-item my-event delete-event") {
-                if (page == "info" || page == "participation" || page == "mydiscussion" || page == "myevent") {
-                    action = '';
-                }
-                else {
-                    action = 'myeventdelete/';
-                }
+        page = $(this).attr('id');
+
+        let obj = $(this).attr('class');
+
+        if (obj == "view-btn view-more my-event" || obj == "view-btn delete-item my-event delete-event") {
+            if (page == "info" || page == "participation" || page == "mydiscussion" || page == "myevent") {
+                action = '';
             }
-            if (obj == "view-btn view-more my-forum" || obj == "view-btn delete-item my-forum delete-forum") {
-                action = 'mydiscussiondelete/';
-            }    
-
-            console.log(page);
-            $.ajax({
-                type: 'GET',
-                url: 'profile/' + action + page,
-                success: function (data) {
-                    $('.profile .profile-container').html(data);
-                }
-            });
+            else {
+                action = 'myeventdelete/';
+            }
+        }
+        if (obj == "view-btn view-more my-forum" || obj == "view-btn delete-item my-forum delete-forum") {
+            action = 'mydiscussiondelete/';
+        }
+        if (page==null) {
+            page = 'info';
         }
 
-    </script>
+        console.log(page);
+        $.ajax({
+            type: 'GET',
+            url: 'profile/' + action + page,
+            success: function (data) {
+                $('.profile .profile-container').html(data);
+            }
+        });
+    }
+
+</script>
