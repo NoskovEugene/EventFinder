@@ -1,0 +1,14 @@
+﻿@model EventFinder.Models.ProfileModels.ProfileViewModel
+@using EventFinder.Extensions;
+
+
+<div class="partial-profile">
+    <h3>Общая информация</h3>
+    <div class="profile-info">
+        <p><b>Логин: </b>@Model.User.Login</p>
+        <p><b>Почта: </b>@Model.User.Email</p>
+        <p><b>Имя: </b>@Model.User.Name.ChangeString()</p>
+        <p><b>Фамилия: </b>@Model.User.SurName.ChangeString()</p>
+        <p><b>Обо мне: </b>@Model.User.AboutMe.ChangeString()</p>
+    </div>
+</div>

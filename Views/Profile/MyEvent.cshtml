@@ -1,0 +1,42 @@
+﻿@model List<EventFinder.Models.Entity.Event>
+
+<div class="partial-profile">
+    <h3>Мои мероприятия</h3>
+    <section class="view-list">
+        @if (Model.Count() != 0)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="view-page">
+                    <div class="view-body">
+                        <p class="view-name">@item.Name</p>
+                        <p class="view-place">@item.Place</p>
+                        <p class="view-date">@item.EventDate</p>
+                    </div>
+                    <div class="buttons-myevent">
+                        <a class="view-btn view-more my-event" asp-controller="Event" asp-action="EventDetails" asp-route-id="@item.Id">
+                            <span class="fas fa-search"></span>
+                        </a>
+                        <a class="view-btn delete-item my-event delete-event" id="@item.Id">
+                            <span class="fa fa-trash-o"></span>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="no-exits-items"><p>Нет мероприятий</p></div>
+        }
+    </section>
+</div>
+<script type="text/javascript">
+
+        let event = document.querySelectorAll('.delete-event');
+        console.log(event);
+        for (let i = 0; i < event.length; i++)
+        {
+            event[i].addEventListener('click', getPage);
+        }
+
+</script>

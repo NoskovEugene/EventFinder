@@ -1,4 +1,4 @@
-@using EventFinder.Models.Entity;
+﻿@using EventFinder.Models.Entity;
 @model Tuple<Forum, List<ForumMessage>>;
 
 @{
@@ -15,23 +15,6 @@
 
     @if (Model != null)
     {
-        <!--
-            <div class="card" style="border: solid 2px black">
-            <div class="card-body">
-                <div class="card-title">
-                    Theme: @Model.Item1.Theme
-                </div>
-                <div class="card-subtitle mb-2 text-muted">
-                    <p>
-                        Id: @Model.Item1.Id
-                    </p>
-                    <p>
-                        Owner: @Model.Item1.Owner.Login
-                    </p>
-                </div>
-            </div>
-        </div>
-        -->
         <div class="wrap-dialog">
             <h3>@Model.Item1.Theme</h3>
             <div class="dialog">
@@ -40,20 +23,21 @@
                     {
                         <div class="card">
                             <div class="card-body">
-                                <div class="card-text">
-                                    @item.Message
-                                </div>
                                 <div class="card-title">
                                     @item.User.Login
                                 </div>
+                                <div class="card-text">
+                                    @item.Message
+                                </div>
+
                             </div>
                         </div>
                     }
                 </div>
             </div>
             <div class="send-panel">
-                <textarea id="newMessage" class="input-area" placeholder="message"></textarea>
-                <button class="btn" onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);">Send</button>
+                <textarea id="newMessage" class="input-area" placeholder="Написать сообщение..."></textarea>
+                <button onclick="SendMessage(@Model.Item1.Id,document.getElementById('newMessage').value);"><span class="fa fa-paper-plane"></span></button>
             </div>
         </div>
     }
@@ -65,3 +49,4 @@
     }
 
 </div>
+

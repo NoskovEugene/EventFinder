@@ -1,0 +1,89 @@
+﻿@model EventFinder.Models.EventModels.EventDetailsViewModel
+@using EventFinder.Extensions;
+@{
+    ViewData["Title"] = Model.Event.Name;
+}
+
+<div class="wrap-event-events wrapper">
+    <section class="event-details">
+        <h2>@Model.Event.Name</h2>
+        <div class="event-details-body">
+            <div class="event-details-main">
+                <div class="event-details-info">
+                    <p><span><b>Дата: </b></span>@Model.Event.EventDate</p>
+                    <p><span><b>Место: </b></span>@Model.Event.Place</p>
+                    <p><span><b>Категория: </b></span>@Model.Event.Category.Name</p>
+                    <p><span><b>Создатель: </b></span>@Model.Event.Owner.Login</p>
+                </div>
+                <div class="event-details-desc">
+                    <p><span><b>Описание: </b></span>@Model.Event.Description.ChangeString()</p>
+                </div>
+                <div class="event-details-chat">
+                    <p>
+                        <span>
+                            <b>Беседы: </b>
+                            @foreach (var item in Model.Event.Forums)
+                            {
+                                <a asp-controller="Forum" asp-action="ForumView" asp-route-id="@item.Id">@item.Theme</a>
+                            }
+                        </span>
+                    </p>
+                </div>
+                @if (Model.Event.EventLink != null)
+                {
+                    <div class="event-details-link">
+                        <p><a href="@Model.Event.EventLink"><b>Перейти на основной сайт мероприятия</b></a></p>
+                    </div>
+                }
+            </div>
+            <div class="event-details-part">
+                <p><span><b>Участники</b></span></p>
+                @foreach (var item in Model.EventUser)
+                {
+                    <div class="event-user" id="@item.EventId.ToString()@item.UserId.ToString()"><span class="fas fa-user"></span>@item.User.Login</div>
+                }
+            </div>
+        </div>
+        @if (Model.EventUser.Where(s => s.EventId == Model.Event.Id && s.UserId == Model.Event.OwnerId).Count() == 0)
+        {
+            <button class="follow" alt="@Model.Event.Id">Присоединиться</button>
+        }
+        else
+        {
+            <button class="follow unfollow" alt="@Model.Event.Id">Отписаться от события</button>
+        }
+
+    </section>
+</div>
+<script type="text/javascript">
+
+    let button = document.querySelector('button.follow');
+    button.addEventListener('click', followCheck);
+
+    function followCheck() {
+
+        var id = $(this).attr('alt');
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/FollowEvent/' + id,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                if (data.user != null) {
+                    $('.follow').addClass('unfollow');
+                    $('.follow').html('Отписаться от события');
+                    $('.event-details .event-details-part').append('<div class="event-user" id = "' + data.id + '">' + data.user + '</div>');
+                }
+                else {
+                    $('.follow').removeClass('unfollow');
+                    $('.follow').html('Присоединиться');
+                    $('#' + data.id).remove();
+                }
+
+            }
+        });
+
+    }
+</script>
+

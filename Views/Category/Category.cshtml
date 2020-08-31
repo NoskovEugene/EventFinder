@@ -1,0 +1,53 @@
+﻿@model EventFinder.Models.Entity.Category
+
+<div class="wrap-profile">
+    <section class="list-forums-and-events profile">
+        <h2><span>@Model.Name</span></h2>
+        <div class="category-body profile-body">
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a class="share-page" id="events"><span class="fa fa-calendar-o"></span>Мероприятия</a></li>
+                        <li><a class="share-page" id="forums"><span class="fa fa-comment-o"></span>Беседы</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="profile-container">
+                
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+
+    let share = document.querySelectorAll('.share-page');
+
+    for (let i = 0; i < share.length; i++)
+    {
+        share[i].addEventListener('click', getEventForum);
+    }
+
+    window.addEventListener('load', getEventForum);
+
+    function getEventForum() {
+
+        let page = null;
+
+        page = $(this).attr('id');
+
+        if (page == null) {
+            page = 'events';
+        }
+
+        console.log(page);
+        $.ajax({
+            type: 'GET',
+            url: @Model.Id + '/' + page,
+            success: function (data) {
+                $('.profile .profile-container').html(data);
+            }
+        });
+    }
+
+</script>

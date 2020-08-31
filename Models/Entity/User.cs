@@ -18,8 +18,13 @@ namespace EventFinder.Models.Entity
 
         public string AboutMe {get;set;}
 
-        public string PathToPhoto {get;set;}
-        
+        public virtual Image Image {get;set;}
+
+        public int? ImageId { get; set; }
+
         public virtual IList<UserRole> UserRoles {get;set;}
+
+        public virtual IList<EventUser> EventUsers { get; set; }
+
     }
 }

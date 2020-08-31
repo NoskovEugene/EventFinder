@@ -1,10 +1,11 @@
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
-span.fa, span.fas, span.fab {
+span.fa, span.far, span.fas, span.fab {
     font-family: fontawesome !important;
     font-size: 18pt;
     color: black;
     cursor: pointer;
+    font-weight: normal !important;
 }
 
 a {
@@ -13,21 +14,16 @@ a {
     font-size: 20px;
 }
 
-input[type="text"], input[type="password"] {
-    font-size: 12pt;
-    text-align: center;
-    vertical-align: middle;
+header, footer, .hello, h2, h3, .view-name {
+    font-family: 'Montserrat', sans-serif;
 }
 
-input[placeholder] {
-    text-align: start;
-    vertical-align: middle;
-}
+
 
 /*-----------------------------------------------------BASE---------------------------------------------------------*/
 html {
     scroll-behavior: smooth;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 html, body {
@@ -39,23 +35,19 @@ body {
     position: relative;
     min-height: 100vh;
     height: 100vh;
+    background-color: #EEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 button {
     padding: 0;
     border: none;
     font: inherit;
-}
-
-.btn {
-    color: white;
+    font-family: 'Rubik', sans-serif;
     cursor: pointer;
-    border-radius: 50px;
-    width: 150px;
-    height: 40px;
-    background-color: #0093FD;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    font-size: 20px !important;
 }
 
 .logo-header, .logo, .burger-menu {
@@ -63,9 +55,10 @@ button {
 }
 
 .header-top {
-    box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2);
-    height:90px;
+    /*box-shadow: 0 1px 10px 5px rgba(154, 147, 140, 0.2);*/
     
+    background-color: #FFF;
+    font-weight: bold;
 }
 
 main {
@@ -84,7 +77,6 @@ ul {
     justify-content: center;
     margin-top: 50px;
     width: 100%;
-    height: calc(100vh - 358px);
 }
 
 .border-group {
@@ -159,6 +151,10 @@ ul {
     color: black;
 }
 
+.header-top a:hover {
+    color: #00CBE7;
+}
+
 .header-top li{
     display: inline;
 }
@@ -189,6 +185,7 @@ ul {
     visibility: hidden;
     opacity: 0;
     transition: .3s;
+    margin-top: 0px;
 }
 
 .nav-main.pop-up li{
@@ -323,26 +320,27 @@ a.arrow > img {
 
 .calendar-slider {
     display: flex;
-    width: 80%;
-  flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
 }
 
-.base-form { 
-    width: 500px;
+.base-form {
+    width: 850px;
     min-width: 250px;
-    height: 350px;   
+    height: 595px;
     margin: 50px 5px 0px 5px;
     border-radius: 10px;
-    
-    box-shadow: 0 16px 48px rgba(2,2,2,0.1);
+    background-color: #FFF;
+    /*box-shadow: 0 16px 48px rgba(2,2,2,0.1);*/
 }
 
 .head-cal {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 15%;
+    height: 10%;
     border-bottom: 1px solid #E7E7E7;
     text-align: center;
     justify-content: center;
@@ -351,35 +349,38 @@ a.arrow > img {
 
 .body-cal {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 85%;
-    
+    height: 90%;
 }
 
 .cal-field, .event-cal {
-    width: 50%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
 }
 
 .cal-field {
-    width: 50%;
+    width: 100%;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #000038;
-    border-radius: 0 0 10px 0;
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid #E7E7E7;
+    align-content: space-around;
+    align-items: center;
 }
 
 .clndr {
-    width: 90%;
-    margin-top: 40px;
+    width: 70%;
 }
 
 .event-cal {
-    border-left: 1px solid #E7E7E7;
-    border-radius: 0 0 0 10px;
+    overflow-y: auto;
+    align-items:center;
 }
 
 .cal-icon {
@@ -393,11 +394,13 @@ a.arrow > img {
 /*Event*/
 
 .event-category {
-  width: 70%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-around;*/
+    align-items: center;
+    justify-content:center;
 }
 
 .event-block {
@@ -406,8 +409,8 @@ a.arrow > img {
     height: 150px;
     margin: 10px 5px 10px 5px;
     border-radius: 10px;
-    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);
-    transform: scale(1);
+    /*box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .1);*/
+    transform: scale(0.98);
 }
 
 .name-event {
@@ -442,21 +445,18 @@ a.arrow > img {
 }
 
 .event-block:hover {
-    transform: scale(0.98);
+    transform: scale(1);
 }
 /*--------------------------------------------------------FOOTER---------------------------------------------------*/
 
 footer {
     width: 100%;
     background-color: #91C8FF;
-    bottom: 0;
-    left: 0;
     color: #B1B0AF;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
 }
 
 .nav-footer, footer .logo-media {

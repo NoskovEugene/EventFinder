@@ -1,0 +1,51 @@
+﻿@model EventFinder.Models.EventModels.CreateEventModel
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<div class="wrapper">
+    <section class="create-form">
+        <h2>Создать новое мероприятие</h2>
+        <form asp-controller="Event" asp-action="CreateEvent" method="post">
+            <div class="form-main">
+                <p>
+                    <input type="text" asp-for="Name" placeholder="Название" required>
+                    <span asp-validation-for="Name" class="error-valid"></span>
+                </p>
+                <p>
+                    <select asp-for="CategoryId" required>
+                        <option class ="placeholder" value="" hidden>Выбрать категорию</option>
+                        @foreach (var item in Model.Category)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </p>
+                <p>
+                    <input type="datetime" asp-for="EventDate" placeholder="ДД-ММ-ГГГГ ХХ:ХХ" required>
+                    <span asp-validation-for="EventDate" class="error-valid"></span>
+                </p>
+                <p>
+                    <input type="text" asp-for="Place" placeholder="Место" required>
+                    <span asp-validation-for="Place" class="error-valid"></span>
+                </p>
+                <p>
+                    <textarea asp-for="Description" placeholder="Описание"></textarea>
+                    <span asp-validation-for="Description" class="error-valid"></span>
+                </p>
+                <p>
+                    <input asp-for="EventLink" placeholder="Ссылка на событие">
+                    <span asp-validation-for="EventLink" class="error-valid"></span>
+                </p>
+                <p class="create-chat">
+                    <input type="checkbox" asp-for="CreateChat">
+                    <label asp-for="CreateChat">Создать обсуждение для меропрития?</label>
+                </p>
+            </div>
+            <button type="submit">Сохранить</button>
+        </form>
+    </section>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

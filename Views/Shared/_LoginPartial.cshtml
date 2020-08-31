@@ -3,16 +3,10 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <li class="auth-item"><span class="fas fa-user"></span><a>@User.Identity.Name</a>|<a href="/Account/Logout">Выход</a></li>
-    <!--<li class="nav-item">
-        <a class="nav-link text-dark">Hello </a>
-
-    </li>
-    <li class="nav-item"><a class="nav-link text-dark" href="/Account/Logout">Logout</a></li>-->
+    <li class="auth-item"><span class="fas fa-user"></span><a asp-controller="Profile" asp-action="Profile">@User.Identity.Name</a>|<a href="/Account/Logout">Выход</a></li>
 }
 else
 {
     <li class="auth-item"><span class="fas fa-user"></span><a href="/Account/Login">Вход</a>|<a href="/Account/Register">Регистрация</a></li>
-    <!--<li class="nav-item"><a class="nav-link text-dark" href="/Account/Register">Register</a></li>
-    <li class="nav-item"><a class="nav-link text-dark" href="/Account/Login">Login</a></li>-->
+    
 }

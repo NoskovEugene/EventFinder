@@ -1,0 +1,35 @@
+﻿section.list-forums-and-events {
+    width: 50%;
+}
+
+.category-body .profile-container {
+    width: 80%;
+}
+
+.category-body aside {
+    width: 20%;
+}
+
+section.list-forums-and-events .category-body li:first-child span {
+    margin: 0;
+    margin-right: 10px;
+}
+
+section.list-forums-and-events h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+section.list-forums-and-events table, section.list-forums-and-events h3  {
+    padding: 20px;
+    background-color: white;
+}
+
+section.list-forums-and-events table {
+
+}
+
+section.list-forums-and-events th {
+    border: none;
+    border-bottom: 1px solid #EEE;
+}

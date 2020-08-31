@@ -12,42 +12,60 @@ using EventFinder.Models.ForumModels;
 using EventFinder.Models.Repositories;
 using EventFinder.Models.Entity;
 using EventFinder.Extensions;
+using EventFinder.Models.EventModels;
+
 namespace EventFinder.Controllers
 {
     [Authorize()]
-    [Route("forum/[action]")]
+    
     public class ForumController : Controller
     {
-        
-        protected IRepositoryBase<Forum> ForumRepository{get;set;}
 
-        protected IRepositoryBase<ForumMessage> ForumMessageRepository {get;set;}
+        protected IRepositoryBase<Forum> ForumRepository { get; set; }
 
-        protected IRepositoryBase<User> UserRepository{get;set;}
+        protected IRepositoryBase<ForumMessage> ForumMessageRepository { get; set; }
+
+        protected IRepositoryBase<User> UserRepository { get; set; }
+
+        protected IRepositoryBase<Category> CategoryRepository { get; set; }
+
+        protected IRepositoryBase<Event> EventRepository { get; set; }
 
         public ForumController(IRepositoryBase<Forum> forumRepo,
                                IRepositoryBase<ForumMessage> forumMessageRepo,
-                               IRepositoryBase<User> userRepo)
+                               IRepositoryBase<User> userRepo,
+                               IRepositoryBase<Category> catRepo,
+                               IRepositoryBase<Event> eventRepo)
         {
             this.ForumRepository = forumRepo;
             this.ForumMessageRepository = forumMessageRepo;
             this.UserRepository = userRepo;
+            this.CategoryRepository = catRepo;
+            this.EventRepository = eventRepo;
         }
 
+        [Route("forums/")]
         public IActionResult Forums()
         {
-            var forums = ForumRepository.Query(x=> x.Id != 0).ToList();
+            var forums = ForumRepository.Query(x => x.Id != 0).ToList();
+
             return View(forums);
         }
 
         [HttpGet]
+        [Route("forums/createforum")]
         public IActionResult CreateForum()
         {
-            return View();
+            var model = new CreateForum
+            { 
+                Category = CategoryRepository.Query(s => s.Id != 0).ToList(),
+                Event = EventRepository.Query(s => s.Id != 0).ToList()
+            };
+            return View(model);
         }
 
         [HttpPost]
-        [ActionName("createforum")]
+        [Route("forums/createforum")]
         public IActionResult CreateForum(CreateForum model)
         {
             if(ModelState.IsValid)
@@ -57,13 +75,24 @@ namespace EventFinder.Controllers
                 ForumRepository.Insert(new Forum() {
                     CreationTime = DateTime.Now,
                     OwnerId = user.Id,
-                    Theme = model.Theme
+                    Theme = model.Theme,
+                    CategoryId = model.CategoryId,
+                    EventId = model.EventId
                 });
+                return RedirectToAction("Forums", "Forum");
             }
-            return Ok();
+            else
+            {
+                model.Category = CategoryRepository.Query(s => s.Id != 0).ToList();
+                model.Event = EventRepository.Query(s => s.Id != 0).ToList();
+
+                return View(model);
+            }
+            
         }
 
         [HttpGet]
+        [Route("forums/{id}")]
         public IActionResult ForumView(int? id)
         {
             var forum = ForumRepository.Query(x=> x.Id == id).FirstOrDefault();
